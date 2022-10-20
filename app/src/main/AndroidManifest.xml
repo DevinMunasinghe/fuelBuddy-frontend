@@ -10,11 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FuelApp">
         <activity android:name=".QueueDetails">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".StationData" />
         <activity android:name=".StationList">
@@ -24,13 +20,17 @@
 
         </activity>
         <activity android:name=".DriverRegistration">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
         <activity android:name=".RegisterPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
