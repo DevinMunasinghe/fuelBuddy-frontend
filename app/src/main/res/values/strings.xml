@@ -13,6 +13,8 @@
     <string name="name">Name</string>
     <string name="phone">Phone</string>
     <string name="email">Email</string>
-    <string name="stationName">Station Name</string>
+    <string name="stationName">Fuel Station Name</string>
     <string name="vehicleType">Vehicle Type</string>
+    <string name="stationID">Fuel Station ID</string>
+    <string name="vehicleId">Vehicle Registration Number</string>
 </resources>
