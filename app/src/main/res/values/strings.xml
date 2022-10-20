@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Fuel App</string>
+    <string name="loginLabel">Login</string>
+    <string name="loginUserName">User Name</string>
+    <string name="loginPassword">Password</string>
+    <string name="registerPageLink">Are you a new member ? </string>
+    <string name="registerPageLabel">Need to register as , </string>
+    <string name="stationOwnerBtn">Fuel Station Owner </string>
+    <string name="driverBtn">Driver </string>
+    <string name="stationOwnerRegistration">Fuel Station Owner Registration</string>
+    <string name="registerBtn">Register</string>
+    <string name="driverRegistration">Driver Registration</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+    <string name="stationName">Station Name</string>
+    <string name="vehicleType">Vehicle Type</string>
 </resources>
