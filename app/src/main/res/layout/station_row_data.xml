@@ -32,10 +32,21 @@
 
         </TextView>
         <TextView
-            android:id="@+id/stationAvailability"
+            android:id="@+id/vehicleCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="150dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:text="count"
+            android:textSize="17dp"
+            >
+        </TextView>
+        <TextView
+            android:id="@+id/stationAvailability"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="280dp"
             android:ellipsize="end"
             android:lines="1"
             android:text="item title"

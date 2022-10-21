@@ -17,7 +17,8 @@ public class StationList extends AppCompatActivity {
 
     ListView stationListView;
     String[] stationArray={"lili","devin","senal","saman","kukula"};
-    String[] stationAvailabiltyArray={"lili","devin","senal","saman","kukula"};
+    String[] vehicleCountArray ={"1","2","3","4","5","6"};
+    String[] stationAvailabiltyArray={"li3li","deverein","senaerel","sama33n","ku33kula"};
 
 //    private ArrayList stationName,stationAvailabilty;
 
@@ -39,7 +40,8 @@ public class StationList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
                 Intent intent = new Intent(getApplicationContext(),StationData.class);
                 intent.putExtra("stationName",stationArray[i]);
-                intent.putExtra("stationAvailability",stationArray[i]);
+                intent.putExtra("stationAvailability",stationAvailabiltyArray[i]);
+                intent.putExtra("vehicleCount",vehicleCountArray[i]);
 
                 startActivity(intent);
             }
@@ -67,9 +69,11 @@ public class StationList extends AppCompatActivity {
         public View getView(int i, View convertView, ViewGroup parent) {
             View view1 = getLayoutInflater().inflate(R.layout.station_row_data,null);
             TextView stationName = view1.findViewById(R.id.stationName);
+            TextView vehicleCount = view1.findViewById(R.id.vehicleCount);
             TextView stationAvailability = view1.findViewById(R.id.stationAvailability);
 
             stationName.setText(stationArray[i]);
+            vehicleCount.setText(vehicleCountArray[i]);
             stationAvailability.setText(stationAvailabiltyArray[i]);
 
             return  view1;
