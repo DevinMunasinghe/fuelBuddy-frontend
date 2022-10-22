@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,12 +12,7 @@ import android.widget.Toast;
 import com.example.fuelapp.APIManager.Fuel;
 import com.example.fuelapp.APIManager.RetrofitClient;
 import com.example.fuelapp.APIManager.StationDet;
-import com.example.fuelapp.APIManager.StationList;
 import com.example.fuelapp.APIManager.User;
-import com.google.gson.Gson;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;

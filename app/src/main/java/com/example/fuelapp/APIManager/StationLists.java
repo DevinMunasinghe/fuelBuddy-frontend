@@ -4,12 +4,12 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class StationList {
+public class StationLists {
 
     @SerializedName("data")
     private List<StationDet> stations;
 
-    public StationList(List<StationDet> stations) {
+    public StationLists(List<StationDet> stations) {
         this.stations = stations;
     }
 

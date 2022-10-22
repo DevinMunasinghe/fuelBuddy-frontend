@@ -2,9 +2,6 @@ package com.example.fuelapp.APIManager;
 
 
 
-import java.util.List;
-
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -19,7 +16,7 @@ public interface Api {
 
     @retrofit2.http.Headers("Content-type: application/json")
     @GET("stations")
-    Call<StationList> viewStations();
+    Call<StationLists> viewStations();
 
     @retrofit2.http.Headers("Content-type: application/json")
     @POST("users/register")
