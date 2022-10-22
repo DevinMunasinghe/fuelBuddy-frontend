@@ -2,10 +2,12 @@ package com.example.fuelapp.APIManager;
 
 
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface Api {
     String BASE_URL = "http://192.168.8.153:6000/api/v1/";
@@ -29,6 +31,11 @@ public interface Api {
     @retrofit2.http.Headers("Content-type: application/json")
     @POST("users/login/")
     Call<Void> login(@Body LoginResult loginResult);
+
+    @retrofit2.http.Headers("Content-type: application/json")
+    @GET("queues/{stationId}")
+    Call<Object> getQueueVehicleCount(@Path("stationId") String stationId);
+
 
 
 }

@@ -17,9 +17,13 @@ import com.example.fuelapp.APIManager.RetrofitClient;
 import com.example.fuelapp.APIManager.StationDet;
 import com.example.fuelapp.APIManager.StationLists;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +37,7 @@ public class StationList extends AppCompatActivity {
     String[] stationAvailabiltyArray={"li3li","deverein","senaerel","sama33n","ku33kula"};
 
     String[] ids;
+    String[] queueIds;
     String[] stationNames;
     String[] address ;
     String[] phone ;
@@ -41,6 +46,7 @@ public class StationList extends AppCompatActivity {
     String[] fuelArrivals ;
     String[] fuelCompletes ;
     String[] fuelStatus ;
+    String[] fuelAvailability ;
     int length;
 
     @Override
@@ -59,11 +65,12 @@ public class StationList extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),StationData.class);
                 intent.putExtra("stationName",stationNames[i]);
                 intent.putExtra("stationAvailability",phone[i]);
-                intent.putExtra("vehicleCount",phone[i]);
+                intent.putExtra("vehicleCount",queueIds[i]);
 
                 startActivity(intent);
             }
         });
+
 
 
 
@@ -80,6 +87,7 @@ public class StationList extends AppCompatActivity {
                 Gson gson = new Gson();
 
                 List<StationDet> list = response.body().getStations();
+                int arrayLength = list.size();
                 ids = new String[list.size()];
                 stationNames = new String[list.size()];
                 List<String> address = new ArrayList<>();
@@ -89,9 +97,14 @@ public class StationList extends AppCompatActivity {
                 List<String> fuelTypes = new ArrayList<>();
                 List<String> fuelArrivals = new ArrayList<>();
                 List<String> fuelCompletes = new ArrayList<>();
-                List<String> fuelStatus = new ArrayList<>();
+                fuelStatus = new String[list.size()];
+
+
+                queueIds = new String[list.size()];
+                fuelAvailability = new String[arrayLength];
 
                 for(int i=0; i<list.size(); i++){
+                    getStationQueueCount(list.get(i).getId(),i);
                     ids[i]=list.get(i).getId();
                     stationNames[i] =list.get(i).getName();
                     address.add(list.get(i).getAddress());
@@ -103,14 +116,21 @@ public class StationList extends AppCompatActivity {
                         fuelTypes.add(fuels[j].getType());
                         fuelArrivals.add(fuels[j].getArrival());
                         fuelCompletes.add(fuels[j].getComplete());
-                        fuelStatus.add(fuels[j].getStatus());
+                        fuelStatus[j] = fuels[j].getStatus();
+                        if(fuels[j].getStatus().equals("available") ){
+                            fuelAvailability[i] = fuelStatus[i];
+                        }else {
+                            fuelAvailability[i] = "unavailable";
+                        }
+
                     }
 
                 }
 
+
+
                 for(String i: ids){
                     System.out.println(gson.toJsonTree(i));
-
                 }
 
                 System.out.println(gson.toJsonTree(response.body()));
@@ -123,6 +143,29 @@ public class StationList extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void getStationQueueCount(String stationId, int i){
+        Call<Object> call = RetrofitClient.getInstance().getMyApi().getQueueVehicleCount(stationId);
+
+        call.enqueue(new Callback<Object> () {
+            @Override
+            public void onResponse(Call<Object>  call, Response<Object>   response) {
+                Gson gson = new Gson();
+                JsonParser parser = new JsonParser();
+                JsonElement element = gson.toJsonTree(response.body());
+                JsonObject rootObject = element.getAsJsonObject();
+                String message = rootObject.get("data").getAsString();
+
+                System.out.println(message);
+                queueIds[i] = message;
+
+            }
+            @Override
+            public void onFailure(Call<Object>   call, Throwable t) {
+                Log.e("Error",t.getMessage());
+            }
+        });
 
 
     }
@@ -150,8 +193,8 @@ public class StationList extends AppCompatActivity {
             TextView stationAvailability = view1.findViewById(R.id.stationAvailability);
 
             stationName.setText(stationNames[i]);
-            vehicleCount.setText(phone[i]);
-            stationAvailability.setText(phone[i]);
+            vehicleCount.setText(queueIds[i]);
+            stationAvailability.setText(fuelAvailability[i]);
 
             return  view1;
         }
