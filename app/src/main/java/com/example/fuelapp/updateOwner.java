@@ -17,5 +17,6 @@ public class updateOwner extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_owner);
         fuelType = findViewById(R.id.FuelTypeUpdateInput);
+        fuelType = findViewById(R.id.arrivalTimeVal);
     }
 }

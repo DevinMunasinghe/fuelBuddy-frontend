@@ -141,7 +141,7 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/fuelTypeName1"
+                android:id="@+id/fuelType1Name1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="90dp"
@@ -169,7 +169,7 @@
                 android:textColor="#957C7C"
                 android:text="TextView"
                 android:textSize="15dp"
-                android:layout_below="@id/fuelTypeName1"/>
+                android:layout_below="@id/fuelType1Name1"/>
 
             <TextView
                 android:id="@+id/finishTimeLabel"
