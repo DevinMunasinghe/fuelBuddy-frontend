@@ -220,7 +220,7 @@
 >
 
         <Button
-            android:id="@+id/joiToQueue"
+            android:id="@+id/joiToQueueBtn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:backgroundTint="@color/navy_clue"
@@ -231,7 +231,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:id="@+id/exitBeforePump"
+            android:id="@+id/exitBeforePumpBtn"
             android:text="Exit Before pump"
             android:backgroundTint="@color/navy_clue"
 
@@ -240,7 +240,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:id="@+id/exitPumpBtn"
+            android:id="@+id/exitAfterPumpBtn"
             android:text="Exit after pump"
 
             android:backgroundTint="@color/navy_clue"

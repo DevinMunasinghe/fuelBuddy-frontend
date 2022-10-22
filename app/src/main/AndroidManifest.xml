@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.fuelapp">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -8,33 +11,48 @@
         android:label="FuelBuddy"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FuelApp">
-        <activity android:name=".updateOwner">
-
-        </activity>
-        <activity android:name=".QueueDetails">
-
-        </activity>
-        <activity android:name=".StationData" />
-        <activity android:name=".StationList">
+        android:theme="@style/Theme.FuelApp"
+        android:usesCleartextTraffic="true"
+        >
+        <activity android:name=".StationOwnerRegistration"
+            android:exported="true"
+            tools:ignore="IntentFilterExportedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StationOwnerRegistration">
+        <activity android:name=".DriverRegistration"
+            tools:ignore="IntentFilterExportedReceiver"
+            android:exported="true">
+        </activity>
+        <activity android:name=".updateOwner"
+            android:exported="true"
+            tools:ignore="IntentFilterExportedReceiver"></activity>
+        <activity android:name=".QueueDetails"
+            android:exported="true"
+            tools:ignore="IntentFilterExportedReceiver"></activity>
+        <activity android:name=".StationData"
+            android:exported="true"
+            tools:ignore="IntentFilterExportedReceiver"></activity>
+        <activity android:name=".StationList"
+            android:exported="true"
+            tools:ignore="IntentFilterExportedReceiver">
 
         </activity>
-        <activity android:name=".DriverRegistration">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".RegisterPage"
+            android:exported="true"
+            tools:ignore="IntentFilterExportedReceiver"></activity>
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
+        <activity android:name=".MainActivity"
+            android:exported="true"
+            tools:ignore="IntentFilterExportedReceiver">
+
         </activity>
-        <activity android:name=".RegisterPage"></activity>
-        <activity android:name=".MainActivity"></activity>
+
+
+
     </application>
 
 </manifest>

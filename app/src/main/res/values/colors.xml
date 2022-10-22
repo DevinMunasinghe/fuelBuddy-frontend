@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="purple">#8692f7</color>
     <color name="navy_clue">#120070</color>
+    <color name="dark_blue">#264653</color>
+    <color name="teal_blue">#2a9d8f</color>
 </resources>
