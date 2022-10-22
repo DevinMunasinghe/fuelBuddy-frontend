@@ -9,9 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FuelApp">
-        <activity android:name=".QueueDetails">
-
-        </activity>
+        <activity android:name=".updateOwner"></activity>
+        <activity android:name=".QueueDetails"></activity>
         <activity android:name=".StationData" />
         <activity android:name=".StationList">
             <intent-filter>
@@ -20,9 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StationOwnerRegistration" >
-
-        </activity>
+        <activity android:name=".StationOwnerRegistration"></activity>
         <activity android:name=".DriverRegistration">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,12 +27,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterPage">
-
-        </activity>
-        <activity android:name=".MainActivity" >
-
-        </activity>
+        <activity android:name=".RegisterPage"></activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
