@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.fuelapp">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -8,23 +11,38 @@
         android:label="FuelBuddy"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FuelApp">
-        <activity android:name=".StationOwnerRegistration"></activity>
-        <activity android:name=".DriverRegistration">
+        android:theme="@style/Theme.FuelApp"
+        android:usesCleartextTraffic="true"
+        >
+        <activity android:name=".StationOwnerRegistration"
+            android:exported="true"
+            tools:ignore="IntentFilterExportedReceiver">
+
+
+        </activity>
+        <activity android:name=".DriverRegistration"
+            tools:ignore="IntentFilterExportedReceiver"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterPage">
+        <activity android:name=".RegisterPage"
+            android:exported="true"
+            tools:ignore="IntentFilterExportedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity"
+            android:exported="true"
+            tools:ignore="IntentFilterExportedReceiver">
+
+        </activity>
     </application>
 
 </manifest>
