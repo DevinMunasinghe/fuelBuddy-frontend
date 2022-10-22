@@ -7,11 +7,13 @@
     tools:context=".StationOwnerRegistration"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/logging">
+    android:background="@drawable/ownernew">
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp"
         android:background="@drawable/custom_edittext">
@@ -27,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/stationOwnerRegistration"
                 android:textAlignment="center"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:textColor="@color/navy_clue"
                 />
             <EditText

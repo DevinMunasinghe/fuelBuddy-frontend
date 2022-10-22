@@ -17,32 +17,37 @@
         <activity android:name=".StationOwnerRegistration"
             android:exported="true"
             tools:ignore="IntentFilterExportedReceiver">
-
-
         </activity>
         <activity android:name=".DriverRegistration"
             tools:ignore="IntentFilterExportedReceiver"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+
+        <activity android:name=".updateOwner"></activity>
+        <activity android:name=".QueueDetails"></activity>
+        <activity android:name=".StationData"></activity>
+        <activity android:name=".StationList"
+                  android:exported="true"
+                  tools:ignore="IntentFilterExportedReceiver">
+
+        </activity>
+
         <activity android:name=".RegisterPage"
             android:exported="true"
             tools:ignore="IntentFilterExportedReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
+
+
+
         <activity android:name=".MainActivity"
             android:exported="true"
             tools:ignore="IntentFilterExportedReceiver">
 
         </activity>
+
+
+
     </application>
 
 </manifest>
