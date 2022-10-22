@@ -32,9 +32,6 @@ import retrofit2.Response;
 public class StationList extends AppCompatActivity {
 
     ListView stationListView;
-    String[] stationArray={"lili","devin","senal","saman","kukula"};
-    String[] vehicleCountArray ={"1","2","3","4","5","6"};
-    String[] stationAvailabiltyArray={"li3li","deverein","senaerel","sama33n","ku33kula"};
 
     String[] ids;
     String[] queueIds;
@@ -55,6 +52,9 @@ public class StationList extends AppCompatActivity {
         getStations();
         setContentView(R.layout.activity_station_list);
 
+        Intent i = new Intent();
+        String vehicleId = i.getStringExtra("vehicleId");
+
         stationListView = findViewById(R.id.stationListView);
         CustomAdapter customAdapter = new CustomAdapter();
 
@@ -66,7 +66,7 @@ public class StationList extends AppCompatActivity {
                 intent.putExtra("stationName",stationNames[i]);
                 intent.putExtra("stationAvailability",phone[i]);
                 intent.putExtra("vehicleCount",queueIds[i]);
-
+                intent.putExtra("stationId",ids[i]);
                 startActivity(intent);
             }
         });

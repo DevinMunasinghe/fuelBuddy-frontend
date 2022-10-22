@@ -222,14 +222,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             >
+
             <TextView
                 android:id="@+id/fuelType2Label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Type : "
-                android:layout_marginTop="10dp"
-                android:textColor="#FF2222"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:text="Type : "
+                android:textColor="#FF2222"
                 android:textSize="20dp" />
 
             <TextView

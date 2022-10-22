@@ -11,6 +11,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.fuelapp.APIManager.Fuel;
+import com.example.fuelapp.APIManager.RetrofitClient;
+import com.example.fuelapp.APIManager.StationDet;
+import com.example.fuelapp.APIManager.User;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class DriverRegistration extends AppCompatActivity {
 
@@ -39,6 +48,7 @@ public class DriverRegistration extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                registerDriver(v);
             }
         });
     }
@@ -70,6 +80,17 @@ public class DriverRegistration extends AppCompatActivity {
 
                //connection to backend for registration of a driver
                 //set the userType as "Customer"
+                String type = "customer";
+                User driver = new User(name.getText().toString(),
+                        phone.getText().toString(),
+                        email.getText().toString(),
+                        password.getText().toString(),
+                        type,
+                        vehicleType.getText().toString(),
+                        vRegNo.getText().toString());
+
+
+                registerVehicleDriver(driver);
 
                 emptyFilledData();
 
@@ -87,6 +108,28 @@ public class DriverRegistration extends AppCompatActivity {
         password.setText("");
         vRegNo.setText("");
         vehicleType.setText("");
+    }
+
+    public void registerVehicleDriver(User user){
+
+        System.out.println(user);
+        Call<User> call = RetrofitClient.getInstance().getMyApi().createUser(user);
+
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User>  call, Response<User> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(getApplicationContext(),"Driver Registered Successfully",Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getApplicationContext(),"Registration Unsuccessful",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User>   call, Throwable t) {
+                Toast.makeText(getApplicationContext(),"Internal Error Occured",Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 

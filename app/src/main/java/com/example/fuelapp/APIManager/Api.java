@@ -1,8 +1,6 @@
 package com.example.fuelapp.APIManager;
 
 
-
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -30,12 +28,21 @@ public interface Api {
 
     @retrofit2.http.Headers("Content-type: application/json")
     @POST("users/login/")
-    Call<Void> login(@Body LoginResult loginResult);
+    Call<Object> login(@Body LoginResult loginResult);
 
     @retrofit2.http.Headers("Content-type: application/json")
     @GET("queues/{stationId}")
     Call<Object> getQueueVehicleCount(@Path("stationId") String stationId);
 
+    @retrofit2.http.Headers("Content-type: application/json")
+    @GET("stations/fuel/{stationId}")
+    Call<FuelList> getFulesInAStation(@Path("stationId") String stationId);
+
+    //search in the stationList
+
+    //update station fuel
+
+    //queue manage
 
 
 }
