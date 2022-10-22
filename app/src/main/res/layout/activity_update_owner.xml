@@ -8,6 +8,7 @@
     android:gravity="center"
     android:background="@drawable/ownernew"
     tools:context=".updateOwner">
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,6 +54,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
                 android:drawablePadding="8dp"
+                android:drawableLeft="@drawable/ic_baseline_arrow_circle_left_24"
                 android:hint="Arrival Date"
                android:inputType="textPersonName"
                 android:padding="8dp"
@@ -65,6 +67,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
                 android:drawablePadding="8dp"
+                android:drawableLeft="@drawable/ic_baseline_event_available_24"
                 android:hint="Endup Day"
                 android:inputType="textPersonName"
                 android:padding="8dp"
@@ -76,11 +79,21 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
+                android:drawableLeft="@drawable/ic_baseline_rule_24"
                 android:drawablePadding="8dp"
                 android:hint="Availability"
                 android:inputType="textPersonName"
                 android:padding="8dp"
                 android:textSize="14sp"
+                />
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:id="@+id/stationDetailsBtn"
+                android:text="Update"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="@color/navy_clue"
+                app:cornerRadius = "20dp"
                 />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
