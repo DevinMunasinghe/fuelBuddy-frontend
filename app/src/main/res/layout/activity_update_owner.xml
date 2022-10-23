@@ -34,24 +34,30 @@
                 android:textSize="20sp"
                 android:textColor="@color/navy_clue"
                 />
+
             <Spinner
                 android:id="@+id/fuel_types"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <EditText
-                android:id="@+id/FuelTypeUpdateInput"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/ic_baseline_local_gas_station_24"
-                android:drawablePadding="8dp"
-                android:hint="Fuel Type"
-                android:inputType="textPersonName"
                 android:padding="8dp"
                 android:textSize="14sp"
+                android:spinnerMode="dropdown"
                 />
+<!--            <EditText-->
+<!--                android:id="@+id/FuelTypeUpdateInput"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginTop="30dp"-->
+<!--                android:background="@drawable/custom_edittext"-->
+<!--                android:drawableLeft="@drawable/ic_baseline_local_gas_station_24"-->
+<!--                android:drawablePadding="8dp"-->
+<!--                android:hint="Fuel Type"-->
+<!--                android:inputType="textPersonName"-->
+<!--                android:padding="8dp"-->
+<!--                android:textSize="14sp"-->
+<!--                />-->
             <EditText
                 android:id="@+id/arrivalUpdateInput"
                 android:layout_width="match_parent"
@@ -90,6 +96,16 @@
                 android:inputType="textPersonName"
                 android:padding="8dp"
                 android:textSize="14sp"
+                />
+            <Spinner
+                android:id="@+id/availability_types"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/custom_edittext"
+                android:padding="8dp"
+                android:textSize="14sp"
+                android:spinnerMode="dropdown"
                 />
             <Button
                 android:layout_width="match_parent"
