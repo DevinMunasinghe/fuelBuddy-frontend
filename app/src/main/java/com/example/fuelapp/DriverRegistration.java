@@ -43,7 +43,7 @@ public class DriverRegistration extends AppCompatActivity {
         email = findViewById(R.id.driverEmailInput);
         password = findViewById(R.id.passwordInput);
         vRegNo = findViewById(R.id.vehicleID);
-        vehicleType = findViewById(R.id.vehicleType);
+//        vehicleType = findViewById(R.id.vehicleType);
 
         vehicle_type_spinner= (Spinner) findViewById(R.id.vehicle_type_spinner);
 
