@@ -7,39 +7,81 @@
     android:layout_height="match_parent"
     tools:context=".RegisterPage">
 
-    <Button
-        android:id="@+id/stationOwnerBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="256dp"
-        android:text="@string/stationOwnerBtn"
+    <LinearLayout
+        android:id="@+id/registerLinerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:background="@drawable/registerbtnpageiameg"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="-16dp">
 
-    <Button
-        android:id="@+id/driverBtn"
-        android:layout_width="204dp"
-        android:layout_height="43dp"
-        android:text="@string/driverBtn"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stationOwnerBtn"
-        app:layout_constraintVertical_bias="0.07" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/registerPageLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/registerPageLabel"
-        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/stationOwnerBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.453"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.871" />
+        app:layout_constraintVertical_bias="0.871"
+        android:layout_below="@+id/registerLinerLayout"
+        android:textSize="25dp"
+        android:textColor="@color/navy_clue"
+        />
+
+    <Button
+        android:id="@+id/stationOwnerBtn"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="190dp"
+        android:text="@string/stationOwnerBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_below="@+id/registerLinerLayout"
+        android:backgroundTint="@color/navy_clue"
+        app:cornerRadius = "20dp"
+        android:padding="15dp"
+        />
+
+    <Button
+        android:id="@+id/driverBtn"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:text="@string/driverBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stationOwnerBtn"
+        app:layout_constraintVertical_bias="0.07"
+        android:backgroundTint="@color/navy_clue"
+        app:cornerRadius = "20dp"
+        android:padding="15dp"
+        />
+
+    <TextView
+        android:id="@+id/loginPageLink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/driverBtn"
+        android:padding="5dp"
+        android:text="No, I already have an account"
+        android:textAlignment="center"
+        android:textColor="@color/purple"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/driverBtn"
+        app:layout_constraintVertical_bias="0.186"
+        tools:layout_editor_absoluteX="0dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
