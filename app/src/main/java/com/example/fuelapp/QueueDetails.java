@@ -109,12 +109,31 @@ public class QueueDetails extends AppCompatActivity {
         exitBeforePumpBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                String idStation = "0001";
+                String vehicle = "ABC 0003";
+                String joined = current;
+                String exit = current;
+                String status = "Exit before Pump";
+
+                //creating a queue object
+                Queue queue = new Queue(joined,exit,status);
+                exitQueueBeforePump(idStation,vehicle,queue);
+
             }
         });
 
         exitAfterPumpBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                String idStation = "0001";
+                String vehicle = "ABC 0003";
+                String joined = current;
+                String exit = current;
+                String status = "Exit After Pump";
+
+                //creating a queue object
+                Queue queue = new Queue(joined,exit,status);
+                exitQueueAfterPump(idStation,vehicle,queue);
             }
         });
 
@@ -250,6 +269,61 @@ public class QueueDetails extends AppCompatActivity {
 //                System.out.println(message);
                 vehicleJoined = message;
 
+            }
+
+            @Override
+            public void onFailure(Call<Object> call, Throwable t) {
+                Log.e("Error", t.getMessage());
+
+            }
+        });
+
+    }
+
+    public void exitQueueBeforePump(String stationId,String vehicleId, Queue queue){
+
+        Call<Object> call = RetrofitClient.getInstance().getMyApi().updateJoinedQueue(stationId,vehicleId,queue);
+        call.enqueue(new Callback<Object>() {
+            @Override
+            public void onResponse(Call<Object>  call, Response<Object> response) {
+
+                Gson gson = new Gson();
+                JsonParser parser = new JsonParser();
+                JsonElement element = gson.toJsonTree(response.body());
+                JsonObject rootObject = element.getAsJsonObject();
+                String message = rootObject.get("message").getAsString();
+                System.out.println(message);
+                if(message.equals("Details Updated")){
+                    Toast.makeText(getApplicationContext(),"Exiting Queue Before Pump",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<Object> call, Throwable t) {
+                Log.e("Error", t.getMessage());
+
+            }
+        });
+
+    }
+
+    public void exitQueueAfterPump(String stationId,String vehicleId, Queue queue){
+
+        Call<Object> call = RetrofitClient.getInstance().getMyApi().updateJoinedQueue(stationId,vehicleId,queue);
+        call.enqueue(new Callback<Object>() {
+            @Override
+            public void onResponse(Call<Object>  call, Response<Object> response) {
+
+                Gson gson = new Gson();
+                JsonParser parser = new JsonParser();
+                JsonElement element = gson.toJsonTree(response.body());
+                JsonObject rootObject = element.getAsJsonObject();
+                String message = rootObject.get("message").getAsString();
+                System.out.println(message);
+                if(message.equals("Details Updated")){
+                    Toast.makeText(getApplicationContext(),"Exiting Queue After Pump",Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
