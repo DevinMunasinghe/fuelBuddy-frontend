@@ -25,6 +25,12 @@ public class Fuel {
         this.status = status;
     }
 
+    public Fuel(String arrival, String complete, String status) {
+        this.arrival = arrival;
+        this.complete = complete;
+        this.status = status;
+    }
+
     public String getType() {
         return type;
     }

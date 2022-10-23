@@ -9,6 +9,7 @@
     android:background="@drawable/ownernew"
     tools:context=".updateOwner">
 
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,6 +20,9 @@
         app:cardElevation="20dp"
         android:background="@drawable/custom_edittext">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,58 +49,161 @@
                 android:textSize="14sp"
                 android:spinnerMode="dropdown"
                 />
-<!--            <EditText-->
-<!--                android:id="@+id/FuelTypeUpdateInput"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:layout_marginTop="30dp"-->
-<!--                android:background="@drawable/custom_edittext"-->
-<!--                android:drawableLeft="@drawable/ic_baseline_local_gas_station_24"-->
-<!--                android:drawablePadding="8dp"-->
-<!--                android:hint="Fuel Type"-->
-<!--                android:inputType="textPersonName"-->
-<!--                android:padding="8dp"-->
-<!--                android:textSize="14sp"-->
-<!--                />-->
-            <EditText
-                android:id="@+id/arrivalUpdateInput"
+            <!--            <EditText-->
+            <!--                android:id="@+id/FuelTypeUpdateInput"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="50dp"-->
+            <!--                android:layout_marginTop="30dp"-->
+            <!--                android:background="@drawable/custom_edittext"-->
+            <!--                android:drawableLeft="@drawable/ic_baseline_local_gas_station_24"-->
+            <!--                android:drawablePadding="8dp"-->
+            <!--                android:hint="Fuel Type"-->
+            <!--                android:inputType="textPersonName"-->
+            <!--                android:padding="8dp"-->
+            <!--                android:textSize="14sp"-->
+            <!--                />-->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/custom_edittext"
-                android:drawablePadding="8dp"
-                android:drawableLeft="@drawable/ic_baseline_arrow_circle_left_24"
-                android:hint="Arrival Date"
-               android:inputType="textPersonName"
-                android:padding="8dp"
-                android:textSize="14sp"
-                />
-            <EditText
-                android:id="@+id/completeUpdateInput"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/arrivalUpdateInput"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:drawableLeft="@drawable/ic_baseline_arrow_circle_left_24"
+                    android:drawablePadding="8dp"
+                    android:text="Arrival Date"
+                    android:textSize="18sp"
+                    />
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SELECT DATE"
+                    android:id="@+id/btn_arrival_date"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="10dp"
+                    android:padding="12dp"
+                    android:layout_alignBottom="@+id/in_date"
+                    android:layout_toRightOf="@+id/arrivalUpdateInput"
+                    android:layout_toEndOf="@+id/in_date"
+                    android:backgroundTint="@color/navy_clue"
+                    app:cornerRadius = "20dp"
+                    />
+
+
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/custom_edittext"
-                android:drawablePadding="8dp"
-                android:drawableLeft="@drawable/ic_baseline_event_available_24"
-                android:hint="Endup Day"
-                android:inputType="textPersonName"
-                android:padding="8dp"
-                android:textSize="14sp"
-                />
-            <EditText
-                android:id="@+id/availabilityUpdateInput"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/arrivalUpdateTimeInput"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:drawableLeft="@drawable/ic_baseline_arrow_circle_left_24"
+                    android:drawablePadding="8dp"
+                    android:text="Arrival Time"
+                    android:textSize="18sp"
+                    />
+                <Button
+                    android:id="@+id/btn_arrival_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SELECT Time"
+
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="10dp"
+                    android:padding="12dp"
+                    android:layout_alignBottom="@+id/in_date"
+                    android:layout_toRightOf="@+id/arrivalUpdateTimeInput"
+                    android:layout_toEndOf="@+id/in_date"
+                    android:backgroundTint="@color/navy_clue"
+                    app:cornerRadius = "20dp"
+                    />
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/ic_baseline_rule_24"
-                android:drawablePadding="8dp"
-                android:hint="Availability"
-                android:inputType="textPersonName"
-                android:padding="8dp"
-                android:textSize="14sp"
-                />
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/completeUpdateInput"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:drawableLeft="@drawable/ic_baseline_arrow_circle_left_24"
+                    android:drawablePadding="8dp"
+                    android:text="Endup Date"
+                    android:textSize="18sp"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SELECT DATE"
+                    android:id="@+id/btn_endup_date"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="10dp"
+                    android:padding="12dp"
+                    android:layout_alignBottom="@+id/in_date"
+                    android:layout_toRightOf="@+id/arrivalUpdateInput"
+                    android:layout_toEndOf="@+id/in_date"
+                    android:backgroundTint="@color/navy_clue"
+                    app:cornerRadius = "20dp"
+                    />
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/completeUpdateTimeInput"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="15dp"
+                    android:drawableLeft="@drawable/ic_baseline_arrow_circle_left_24"
+                    android:drawablePadding="8dp"
+                    android:text="Endup Time"
+                    android:textSize="18sp"
+                    />
+                <Button
+                    android:id="@+id/btn_end_up_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SELECT Time"
+
+                    android:layout_marginTop="18dp"
+                    android:layout_marginLeft="10dp"
+                    android:padding="12dp"
+                    android:layout_alignBottom="@+id/in_date"
+                    android:layout_toRightOf="@+id/arrivalUpdateTimeInput"
+                    android:layout_toEndOf="@+id/in_date"
+                    android:backgroundTint="@color/navy_clue"
+                    app:cornerRadius = "20dp"
+                    />
+
+
+
+            </LinearLayout>
+
             <Spinner
                 android:id="@+id/availability_types"
                 android:layout_width="match_parent"
@@ -117,6 +224,7 @@
                 app:cornerRadius = "20dp"
                 />
         </LinearLayout>
+        </ScrollView>
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

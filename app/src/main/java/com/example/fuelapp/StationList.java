@@ -134,11 +134,6 @@ public class StationList extends AppCompatActivity {
                 }
 
 
-
-                for(String i: vehicleLength){
-                    System.out.println(gson.toJsonTree(i));
-                }
-
                 System.out.println(gson.toJsonTree(response.body()));
                 length = ids.length;
             }
@@ -163,7 +158,7 @@ public class StationList extends AppCompatActivity {
                 JsonObject rootObject = element.getAsJsonObject();
                 message = rootObject.get("data").getAsString();
 
-                vehicleLength[i] =message;
+                accessData(message,i);
 
 
             }
@@ -173,6 +168,10 @@ public class StationList extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void accessData(String vehicleId, int id){
+        vehicleLength[id] = vehicleId;
     }
 
     private class CustomAdapter extends BaseAdapter {
@@ -197,7 +196,6 @@ public class StationList extends AppCompatActivity {
             TextView vehicleCount = view1.findViewById(R.id.vehicleCountList);
             TextView stationAvailability = view1.findViewById(R.id.stationAvailability);
             TextView address = view1.findViewById(R.id.addressValue);
-
 
             stationName.setText(stationNames[i]);
             vehicleCount.setText(vehicleLength[i]);

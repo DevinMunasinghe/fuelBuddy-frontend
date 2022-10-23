@@ -24,7 +24,10 @@
         <activity android:name=".updateOwner"
             android:exported="true"
             tools:ignore="IntentFilterExportedReceiver">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".QueueDetails"
             android:exported="true"
@@ -37,10 +40,7 @@
         <activity android:name=".StationList"
             android:exported="true"
             tools:ignore="IntentFilterExportedReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".RegisterPage"
             android:exported="true"
