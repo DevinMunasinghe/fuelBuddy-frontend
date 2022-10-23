@@ -34,9 +34,10 @@ public class StationList extends AppCompatActivity {
     ListView stationListView;
 
     String[] ids;
-    String[] queueIds;
+    String[] vehicleLength;
     String[] stationNames;
-    String[] address ;
+    String[] addresses ;
+    String[] displayAddresses ;
     String[] phone ;
     Fuel fuels[] = new Fuel[0];
     String[] fuelTypes ;
@@ -45,6 +46,7 @@ public class StationList extends AppCompatActivity {
     String[] fuelStatus ;
     String[] fuelAvailability ;
     int length;
+    String message = " ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +67,7 @@ public class StationList extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),StationData.class);
                 intent.putExtra("stationName",stationNames[i]);
                 intent.putExtra("stationAvailability",phone[i]);
-                intent.putExtra("vehicleCount",queueIds[i]);
+                intent.putExtra("vehicleCount",vehicleLength[i]);
                 intent.putExtra("stationId",ids[i]);
                 startActivity(intent);
             }
@@ -90,7 +92,8 @@ public class StationList extends AppCompatActivity {
                 int arrayLength = list.size();
                 ids = new String[list.size()];
                 stationNames = new String[list.size()];
-                List<String> address = new ArrayList<>();
+                addresses = new String[list.size()];
+                displayAddresses = new String[list.size()];
                 phone = new String[list.size()];
                 List<String> email = new ArrayList<>();
                 Fuel fuels[] = new Fuel[0];
@@ -100,14 +103,14 @@ public class StationList extends AppCompatActivity {
                 fuelStatus = new String[list.size()];
 
 
-                queueIds = new String[list.size()];
+                vehicleLength = new String[list.size()];
                 fuelAvailability = new String[arrayLength];
 
                 for(int i=0; i<list.size(); i++){
                     getStationQueueCount(list.get(i).getId(),i);
                     ids[i]=list.get(i).getId();
                     stationNames[i] =list.get(i).getName();
-                    address.add(list.get(i).getAddress());
+                    addresses[i] = list.get(i).getAddress();
                     phone[i] = list.get(i).getPhone();
                     email.add(list.get(i).getEmail());
                     fuels = list.get(i).getFuel();
@@ -124,12 +127,15 @@ public class StationList extends AppCompatActivity {
                         }
 
                     }
+                    String value = addresses[i];
+                    String [] lastAddress = value.split(",");
+                    displayAddresses[i] = lastAddress[1];
 
                 }
 
 
 
-                for(String i: ids){
+                for(String i: vehicleLength){
                     System.out.println(gson.toJsonTree(i));
                 }
 
@@ -155,10 +161,10 @@ public class StationList extends AppCompatActivity {
                 JsonParser parser = new JsonParser();
                 JsonElement element = gson.toJsonTree(response.body());
                 JsonObject rootObject = element.getAsJsonObject();
-                String message = rootObject.get("data").getAsString();
+                message = rootObject.get("data").getAsString();
 
-                System.out.println(message);
-                queueIds[i] = message;
+                vehicleLength[i] =message;
+
 
             }
             @Override
@@ -166,7 +172,6 @@ public class StationList extends AppCompatActivity {
                 Log.e("Error",t.getMessage());
             }
         });
-
 
     }
 
@@ -189,12 +194,15 @@ public class StationList extends AppCompatActivity {
         public View getView(int i, View convertView, ViewGroup parent) {
             View view1 = getLayoutInflater().inflate(R.layout.station_row_data,null);
             TextView stationName = view1.findViewById(R.id.stationName);
-            TextView vehicleCount = view1.findViewById(R.id.vehicleCount);
+            TextView vehicleCount = view1.findViewById(R.id.vehicleCountList);
             TextView stationAvailability = view1.findViewById(R.id.stationAvailability);
+            TextView address = view1.findViewById(R.id.addressValue);
+
 
             stationName.setText(stationNames[i]);
-            vehicleCount.setText(queueIds[i]);
+            vehicleCount.setText(vehicleLength[i]);
             stationAvailability.setText(fuelAvailability[i]);
+            address.setText(displayAddresses[i]);
 
             return  view1;
         }
