@@ -8,7 +8,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 public interface Api {
-    String BASE_URL = "http://192.168.8.153:6000/api/v1/";
+    String BASE_URL = "http://10.0.2.2:6000/api/v1/";
 
     @retrofit2.http.Headers("Content-type: application/json")
     @GET("users")
@@ -43,6 +43,9 @@ public interface Api {
     //update station fuel
 
     //queue manage
+    @retrofit2.http.Headers("Content-type: application/json")
+    @GET("queues/{stationId}/{vehicleType}")
+    Call<Object> getQueueLengthByVehicle(@Path("stationId") String stationId,@Path("vehicleType") String vehicleType);
 
 
 }
