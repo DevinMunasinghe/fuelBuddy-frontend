@@ -3,6 +3,7 @@ package com.example.fuelapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,7 +23,8 @@ import retrofit2.Response;
 
 public class StationData extends AppCompatActivity {
 
-    TextView stationName, stationAvailability, fuelType1 , fuelType2, fuelType3, fuelType4, arrivalTimeVal1,arrivalTimeVal2,arrivalTimeVal3,arrivalTimeVal4,finishTime1, finishTime2, finishTime3, finishType4;
+    TextView stationName, stationAvailability, fuelType1 , fuelType2, fuelType3, fuelType4, arrivalTimeVal1,arrivalTimeVal2,arrivalTimeVal3,arrivalTimeVal4,finishTime1, finishTime2, finishTime3, finishTime4;
+    TextView availability1,availability2,availability3,availability4;
     Button queueBtn;
 
     @Override
@@ -42,7 +44,12 @@ public class StationData extends AppCompatActivity {
         finishTime1=findViewById(R.id.finishTimeVal);
         finishTime2=findViewById(R.id.finishTime2Val);
         finishTime3=findViewById(R.id.finishTime3Val);
-        finishType4=findViewById(R.id.arrivalTime4Val);
+        finishTime4=findViewById(R.id.finishTime4Val);
+        availability1 = findViewById(R.id.availabilityVal);
+        availability2 = findViewById(R.id.availabilityVal2);
+        availability3 = findViewById(R.id.availabilityVal3);
+        availability4 = findViewById(R.id.availabilityVal4);
+
 
         queueBtn = findViewById(R.id.queueBTN);
         Intent intent = getIntent();
@@ -77,9 +84,32 @@ public class StationData extends AppCompatActivity {
                 Gson gson = new Gson();
 
                 List<Fuel> list = response.body().getFuelList();
-                for(Fuel fuel: list){
-                    System.out.println(fuel.getType());
+                fuelType1.setText(list.get(0).getType());
+                arrivalTimeVal1.setText(list.get(0).getArrival());
+                finishTime1.setText(list.get(0).getComplete());
+                availability1.setText(list.get(0).getStatus());
+
+                fuelType2.setText(list.get(1).getType());
+                arrivalTimeVal2.setText(list.get(1).getArrival());
+                finishTime2.setText(list.get(1).getComplete());
+                availability2.setText(list.get(1).getStatus());
+
+                fuelType3.setText(list.get(2).getType());
+                arrivalTimeVal3.setText(list.get(2).getArrival());
+                finishTime3.setText(list.get(2).getComplete());
+                availability3.setText(list.get(2).getStatus());
+
+                fuelType4.setText(list.get(3).getType());
+                arrivalTimeVal4.setText(list.get(3).getArrival());
+                finishTime4.setText(list.get(3).getComplete());
+                availability4.setText(list.get(3).getStatus());
+
+                if(availability4.equals("available")){
+                    availability4.setTextColor(Color.parseColor("#00FF00"));
                 }
+
+
+
 
 
                 System.out.println(gson.toJsonTree(response.body()));
