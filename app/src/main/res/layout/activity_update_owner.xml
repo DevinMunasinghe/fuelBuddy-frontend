@@ -9,6 +9,7 @@
     android:background="@drawable/ownernew"
     tools:context=".updateOwner">
 
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,6 +20,9 @@
         app:cardElevation="20dp"
         android:background="@drawable/custom_edittext">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,19 +49,19 @@
                 android:textSize="14sp"
                 android:spinnerMode="dropdown"
                 />
-<!--            <EditText-->
-<!--                android:id="@+id/FuelTypeUpdateInput"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:layout_marginTop="30dp"-->
-<!--                android:background="@drawable/custom_edittext"-->
-<!--                android:drawableLeft="@drawable/ic_baseline_local_gas_station_24"-->
-<!--                android:drawablePadding="8dp"-->
-<!--                android:hint="Fuel Type"-->
-<!--                android:inputType="textPersonName"-->
-<!--                android:padding="8dp"-->
-<!--                android:textSize="14sp"-->
-<!--                />-->
+            <!--            <EditText-->
+            <!--                android:id="@+id/FuelTypeUpdateInput"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="50dp"-->
+            <!--                android:layout_marginTop="30dp"-->
+            <!--                android:background="@drawable/custom_edittext"-->
+            <!--                android:drawableLeft="@drawable/ic_baseline_local_gas_station_24"-->
+            <!--                android:drawablePadding="8dp"-->
+            <!--                android:hint="Fuel Type"-->
+            <!--                android:inputType="textPersonName"-->
+            <!--                android:padding="8dp"-->
+            <!--                android:textSize="14sp"-->
+            <!--                />-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -220,6 +224,7 @@
                 app:cornerRadius = "20dp"
                 />
         </LinearLayout>
+        </ScrollView>
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

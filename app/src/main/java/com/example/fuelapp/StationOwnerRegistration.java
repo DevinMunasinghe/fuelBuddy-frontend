@@ -28,6 +28,9 @@ public class StationOwnerRegistration extends AppCompatActivity {
     EditText name, phone, email, password, fuelStationName, fuelStationId,stationAddress;
     Button registerButton;
 
+    String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +93,14 @@ public class StationOwnerRegistration extends AppCompatActivity {
 
                 //creating station object
                 String address = "NO 1569/KL,Kotte";
-                Fuel fuel[] = new Fuel[0];
+
+                //create fuels
+//                Fuel fuel1 = new Fuel("Petrol 92",)
+
+                Fuel [] fuel =new Fuel[0];
+
+
+
                 StationDet stationDet = new StationDet(fuelStationId.getText().toString(),
                         fuelStationName.getText().toString(),
                         address,

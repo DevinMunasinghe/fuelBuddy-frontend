@@ -2,6 +2,6 @@
 <resources>
     <string-array name="availability_array">
         <item>Available</item>
-        <item>Not Available</item>
+        <item>Unavailable</item>
     </string-array>
 </resources>

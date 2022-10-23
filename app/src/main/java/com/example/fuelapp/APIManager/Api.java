@@ -63,4 +63,10 @@ public interface Api {
     @PUT("queues/{stationId}/{vehicleId}")
     Call<Object> updateJoinedQueue(@Path("stationId") String stationId, @Path("vehicleId") String vehicleId, @Body Queue queue);
 
+    @retrofit2.http.Headers("Content-type: application/json")
+    @PUT("stations/{id}/{fuelType}")
+    Call<Object> updateFuelStock(@Path("id") String id, @Path("fuelType") String fuelType, @Body Fuel fuel);
+
+
+
 }
