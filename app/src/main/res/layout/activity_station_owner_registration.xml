@@ -116,6 +116,19 @@
                 android:textSize="14sp"
                 />
             <EditText
+                android:id="@+id/stationAddress"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext"
+                android:drawableLeft="@drawable/ic_baseline_maps_home_work_24"
+                android:drawablePadding="8dp"
+                android:hint="Address"
+                android:inputType="textPersonName"
+                android:padding="8dp"
+                android:textSize="14sp"
+                />
+            <EditText
                 android:id="@+id/stationId"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"

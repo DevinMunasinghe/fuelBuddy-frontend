@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StationList"
+
+    >
+
+    <LinearLayout
+        android:id="@+id/linearviewProfileimage"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@drawable/profileooo"
+        >
+
+    <TextView
+        android:id="@+id/fuelStationListLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Owner Profile "
+        android:layout_below="@id/linearviewProfileimage"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="200dp"
+        android:textColor="@color/navy_clue"
+        />
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/profileOwnerNameLabel"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="Name : "
+
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="30dp"
+        android:textColor="@color/navy_clue"
+        />
+    <TextView
+        android:id="@+id/profileOwnerNameValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="H.K.Abayakoon "
+
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="110dp"
+        android:textColor="@color/navy_clue"
+        />
+    <TextView
+        android:id="@+id/profileOwnerphoneLabel"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:text="Phone : "
+        android:layout_below="@id/profileOwnerNameLabel"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="30dp"
+        android:textColor="@color/navy_clue"
+        />
+    <TextView
+        android:id="@+id/profileOwnerPhoneValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0714478548"
+        android:layout_below="@id/profileOwnerNameValue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="110dp"
+        android:textColor="@color/navy_clue"
+        />
+    <TextView
+        android:id="@+id/ownerStationDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Owned Station List"
+        android:layout_below="@id/profileOwnerPhoneValue"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:textColor="@color/navy_clue"
+        />
+
+    <ListView
+        android:id="@+id/stationOwnerListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/linearviewProfileimage"
+        />
+</RelativeLayout>

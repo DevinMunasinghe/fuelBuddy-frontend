@@ -25,7 +25,7 @@ import retrofit2.Response;
 public class StationOwnerRegistration extends AppCompatActivity {
 
     //variables
-    EditText name, phone, email, password, fuelStationName, fuelStationId;
+    EditText name, phone, email, password, fuelStationName, fuelStationId,stationAddress;
     Button registerButton;
 
     @Override
@@ -39,6 +39,7 @@ public class StationOwnerRegistration extends AppCompatActivity {
         password = findViewById(R.id.ownerPassword);
         fuelStationName = findViewById(R.id.stationName);
         fuelStationId = findViewById(R.id.stationId);
+        stationAddress =findViewById(R.id.stationAddress);
 
         registerButton = findViewById(R.id.ownerRegBtn);
 

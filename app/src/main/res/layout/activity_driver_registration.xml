@@ -108,18 +108,28 @@
                 android:textSize="14sp"
                 />
 
-            <EditText
-                android:id="@+id/vehicleType"
+<!--            <EditText-->
+<!--                android:id="@+id/vehicleType"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:background="@drawable/custom_edittext"-->
+<!--                android:drawableLeft="@drawable/ic_baseline_directions_bus_24"-->
+<!--                android:drawablePadding="8dp"-->
+<!--                android:hint="@string/vehicleType"-->
+<!--                android:inputType="textPassword"-->
+<!--                android:padding="8dp"-->
+<!--                android:textSize="14sp"-->
+<!--                />-->
+            <Spinner
+                android:id="@+id/vehicle_type_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/ic_baseline_directions_bus_24"
-                android:drawablePadding="8dp"
-                android:hint="@string/vehicleType"
-                android:inputType="textPassword"
                 android:padding="8dp"
                 android:textSize="14sp"
+                android:spinnerMode="dropdown"
                 />
             <Button
                 android:layout_width="match_parent"

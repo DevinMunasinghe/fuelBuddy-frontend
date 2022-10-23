@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.fuelapp.APIManager.Fuel;
@@ -26,6 +27,7 @@ public class DriverRegistration extends AppCompatActivity {
     //variables
     EditText name, phone, email, password, vRegNo, vehicleType;
     Button registerButton;
+    Spinner vehicle_type_spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,8 @@ public class DriverRegistration extends AppCompatActivity {
         password = findViewById(R.id.passwordInput);
         vRegNo = findViewById(R.id.vehicleID);
         vehicleType = findViewById(R.id.vehicleType);
+
+        vehicle_type_spinner= (Spinner) findViewById(R.id.vehicle_type_spinner);
 
         registerButton = findViewById(R.id.driverRegBtn);
 
