@@ -1,6 +1,5 @@
 package com.example.fuelapp.APIManager;
 
-
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -47,5 +46,16 @@ public interface Api {
     @GET("queues/{stationId}/{vehicleType}")
     Call<Object> getQueueLengthByVehicle(@Path("stationId") String stationId,@Path("vehicleType") String vehicleType);
 
+    @retrofit2.http.Headers("Content-type: application/json")
+    @GET("queues/waitTime/{stationId}")
+    Call<Object> getQueueWaitingTime(@Path("stationId") String stationId);
+
+    @retrofit2.http.Headers("Content-type: application/json")
+    @POST("queues")
+    Call<Object> joinAQueue(@Body Queue queue);
+
+    @retrofit2.http.Headers("Content-type: application/json")
+    @GET("queues/check/joined/queue/{vehicleId}")
+    Call<Object> checkJoinedVehicle(@Path("vehicleId") String vehicleId);
 
 }

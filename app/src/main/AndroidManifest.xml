@@ -2,9 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.fuelapp">
-
     <uses-permission android:name="android.permission.INTERNET"/>
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,11 +15,11 @@
         <activity android:name=".StationOwnerRegistration"
             android:exported="true"
             tools:ignore="IntentFilterExportedReceiver">
+
         </activity>
         <activity android:name=".DriverRegistration"
             tools:ignore="IntentFilterExportedReceiver"
             android:exported="true">
-
         </activity>
         <activity android:name=".updateOwner"
             android:exported="true"
@@ -31,38 +29,23 @@
             tools:ignore="IntentFilterExportedReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".StationData"
             android:exported="true"
-            tools:ignore="IntentFilterExportedReceiver">
-
-        </activity>
+            tools:ignore="IntentFilterExportedReceiver"></activity>
         <activity android:name=".StationList"
-                  android:exported="true"
-                  tools:ignore="IntentFilterExportedReceiver">
-
+            android:exported="true"
+            tools:ignore="IntentFilterExportedReceiver">
         </activity>
         <activity android:name=".RegisterPage"
             android:exported="true"
-            tools:ignore="IntentFilterExportedReceiver">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
+            tools:ignore="IntentFilterExportedReceiver"></activity>
         <activity android:name=".MainActivity"
             android:exported="true"
             tools:ignore="IntentFilterExportedReceiver">
-
         </activity>
 
-
-
     </application>
-
 </manifest>

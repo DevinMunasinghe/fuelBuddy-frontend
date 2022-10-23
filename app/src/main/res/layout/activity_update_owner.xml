@@ -89,7 +89,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:id="@+id/stationDetailsBtn"
+                android:id="@+id/updateStationBtn"
                 android:text="Update"
                 android:layout_marginTop="15dp"
                 android:backgroundTint="@color/navy_clue"

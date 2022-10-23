@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fuelapp.APIManager.Globaldata;
 import com.example.fuelapp.APIManager.LoginResult;
 import com.example.fuelapp.APIManager.RetrofitClient;
 import com.example.fuelapp.APIManager.StationDet;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         newUser=findViewById(R.id.registerPageLink);
         email=findViewById(R.id.emailInput);
@@ -89,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
     //login function connected with the Rest API
     public void loginUser(LoginResult loginResult){
-
+        Globaldata sharedData = Globaldata.getInstance();
         Call<Object> call = RetrofitClient.getInstance().getMyApi().login(loginResult);
 
         call.enqueue(new Callback<Object>() {
@@ -104,9 +106,12 @@ public class MainActivity extends AppCompatActivity {
                 if(!rootObject.isJsonNull()){
                     if(rootObject.get("type").getAsString().equals("customer")){
                         String vehicleId = rootObject.get("vehicleId").getAsString();
+                        String vehicleType = rootObject.get("vehicleType").getAsString();
                         System.out.println(vehicleId);
                         Intent intent=new Intent(MainActivity.this,StationList.class);
                         intent.putExtra("vehicleId",vehicleId);
+                        sharedData.setNotification_indexOne(vehicleId);
+                        sharedData.setNotification_indexTwo(vehicleType);
                         startActivity(intent);
 
                     }else{
