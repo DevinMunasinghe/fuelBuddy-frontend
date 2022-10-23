@@ -4,6 +4,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface Api {
@@ -57,5 +58,9 @@ public interface Api {
     @retrofit2.http.Headers("Content-type: application/json")
     @GET("queues/check/joined/queue/{vehicleId}")
     Call<Object> checkJoinedVehicle(@Path("vehicleId") String vehicleId);
+
+    @retrofit2.http.Headers("Content-type: application/json")
+    @PUT("queues/{stationId}/{vehicleId}")
+    Call<Object> updateJoinedQueue(@Path("stationId") String stationId, @Path("vehicleId") String vehicleId, @Body Queue queue);
 
 }

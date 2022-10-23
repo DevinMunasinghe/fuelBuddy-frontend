@@ -16,6 +16,9 @@ public class Queue {
     @SerializedName("joined")
     private String joined;
 
+    @SerializedName("exit")
+    private String exit;
+
     @SerializedName("status")
     private String status;
 
@@ -24,6 +27,12 @@ public class Queue {
         this.vehicleId = vehicleId;
         this.vehicleType = vehicleType;
         this.joined = joined;
+        this.status = status;
+    }
+
+    public Queue(String joined, String exit, String status) {
+        this.joined = joined;
+        this.exit = exit;
         this.status = status;
     }
 
@@ -65,5 +74,13 @@ public class Queue {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getExit() {
+        return exit;
+    }
+
+    public void setExit(String exit) {
+        this.exit = exit;
     }
 }
