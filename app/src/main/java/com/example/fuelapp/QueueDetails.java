@@ -154,16 +154,18 @@ public class QueueDetails extends AppCompatActivity {
 
 //                System.out.println(message);
                 vehicleCount = message;
+                vehicleCount = vehicleCount.substring(0,message.length()-2);
 
-                if(vehicleType.equals("Car")){
-                    totalCarCount.setText(message);
-                }else if(vehicleType.equals("Bus")){
-                    totalBusCount.setText(message);
-                }else if(vehicleType.equals("Three-Wheel")){
-                    totalThreeWheelCount.setText(message);
-                }else if(vehicleType.equals("Bike")){
-                    totalBikeCount.setText(message);
-                }
+                    if(vehicleType.equals("Car")){
+                        totalCarCount.setText(vehicleCount);
+                    }else if(vehicleType.equals("Bus")){
+                        totalBusCount.setText(vehicleCount);
+                    }else if(vehicleType.equals("Three-Wheel")){
+                        totalThreeWheelCount.setText(vehicleCount);
+                    }else if(vehicleType.equals("Bike")){
+                        totalBikeCount.setText(vehicleCount);
+                    }
+
             }
 
             @Override
@@ -188,7 +190,8 @@ public class QueueDetails extends AppCompatActivity {
                 JsonObject rootObject = element.getAsJsonObject();
                 String message = rootObject.get("data").getAsString();
 
-                totalVehicleCount.setText(message);
+
+                totalVehicleCount.setText(message.substring(0,message.length()-2));
 
             }
 
@@ -214,7 +217,7 @@ public class QueueDetails extends AppCompatActivity {
                 JsonObject rootObject = element.getAsJsonObject();
                 String message = rootObject.get("data").getAsString();
 
-                waitingTime.setText(message);
+                waitingTime.setText(message.substring(0,message.length()-4));
 
             }
 

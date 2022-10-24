@@ -38,7 +38,7 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
     TextView arrivalTime,  endUpTime,arrivalDate , EndUpDate ;
     Button updateDetailsBtn;
     Spinner spinner, availability_spinner;
-    String fuel, availability;
+    String id;
 
 
     List<Fuel> fuels = new ArrayList<>();
@@ -122,12 +122,16 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
             }
         });
 
-        getData();
+        id = getIntent().getStringExtra("stationId");
+
+        getData(id);
+
+
     }
 
 
-    public void getData(){
-        Call<FuelList> call = RetrofitClient.getInstance().getMyApi().getFulesInAStation("0001");
+    public void getData(String id){
+        Call<FuelList> call = RetrofitClient.getInstance().getMyApi().getFulesInAStation(id);
 
         call.enqueue(new Callback<FuelList>() {
             @Override
@@ -146,19 +150,6 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
 
     public void accessArrayList(List<Fuel> list){
         fuels = list;
-
-        String typeFuel = fuels.get(0).getType();
-        System.out.println(typeFuel);
-
-        if(fuels.get(0).getType().equals("Petrol 95")){
-            spinner.setSelection(1);
-        }else if(fuels.get(0).getType().equals("Petrol 92")){
-            spinner.setSelection(0);
-        }else if(fuels.get(0).getType().equals("Diesel")){
-            spinner.setSelection(2);
-        }else if(fuels.get(0).getType().equals("Super Diesel")){
-            spinner.setSelection(3);
-        }
 
         arrivalDate.setText(fuels.get(0).getArrival().substring(0,11));
         arrivalTime.setText(fuels.get(0).getArrival().substring(11));
@@ -247,8 +238,6 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
 
         String choice = adapterView.getItemAtPosition(position).toString();
-
-//        availability_spinner.setSelection(1);
 
         if(choice.equals("Petrol 92")){
             arrivalDate.setText(arrivalOne);

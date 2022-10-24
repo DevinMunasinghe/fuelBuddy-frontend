@@ -84,33 +84,46 @@ public class StationData extends AppCompatActivity {
                 Gson gson = new Gson();
 
                 List<Fuel> list = response.body().getFuelList();
-                fuelType1.setText(list.get(0).getType());
+                fuelType1.setText(list.get(0).getType().toUpperCase());
                 arrivalTimeVal1.setText(list.get(0).getArrival());
                 finishTime1.setText(list.get(0).getComplete());
                 availability1.setText(list.get(0).getStatus());
 
-                fuelType2.setText(list.get(1).getType());
+                fuelType2.setText(list.get(1).getType().toUpperCase());
                 arrivalTimeVal2.setText(list.get(1).getArrival());
                 finishTime2.setText(list.get(1).getComplete());
                 availability2.setText(list.get(1).getStatus());
 
-                fuelType3.setText(list.get(2).getType());
+                fuelType3.setText(list.get(2).getType().toUpperCase());
                 arrivalTimeVal3.setText(list.get(2).getArrival());
                 finishTime3.setText(list.get(2).getComplete());
                 availability3.setText(list.get(2).getStatus());
 
-                fuelType4.setText(list.get(3).getType());
+                fuelType4.setText(list.get(3).getType().toUpperCase());
                 arrivalTimeVal4.setText(list.get(3).getArrival());
                 finishTime4.setText(list.get(3).getComplete());
                 availability4.setText(list.get(3).getStatus());
 
-                if(availability4.equals("available")){
-                    availability4.setTextColor(Color.parseColor("#00FF00"));
+                if(availability1.getText().equals("Available")){
+                    availability1.setTextColor(Color.parseColor("#00A300"));
+                }else {
+                    availability1.setTextColor(Color.parseColor("#FF0000"));
                 }
-
-
-
-
+                if(availability2.getText().equals("Available")){
+                    availability2.setTextColor(Color.parseColor("#00A300"));
+                }else {
+                    availability2.setTextColor(Color.parseColor("#FF0000"));
+                }
+                if(availability3.getText().equals("Available")){
+                    availability3.setTextColor(Color.parseColor("#00A300"));
+                }else {
+                    availability3.setTextColor(Color.parseColor("#FF0000"));
+                }
+                if(availability4.getText().equals("Available")){
+                    availability4.setTextColor(Color.parseColor("#00A300"));
+                }else {
+                    availability4.setTextColor(Color.parseColor("#FF0000"));
+                }
 
                 System.out.println(gson.toJsonTree(response.body()));
 

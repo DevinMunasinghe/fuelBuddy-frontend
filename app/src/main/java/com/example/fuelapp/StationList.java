@@ -3,6 +3,7 @@ package com.example.fuelapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -76,6 +77,7 @@ public class StationList extends AppCompatActivity {
 
 
 
+
     }
 
     public  void getStations(){
@@ -120,10 +122,10 @@ public class StationList extends AppCompatActivity {
                         fuelArrivals.add(fuels[j].getArrival());
                         fuelCompletes.add(fuels[j].getComplete());
                         fuelStatus[j] = fuels[j].getStatus();
-                        if(fuels[j].getStatus().equals("available") ){
-                            fuelAvailability[i] = fuelStatus[i];
+                        if(fuels[j].getStatus().equals("available") || fuels[j].getStatus().equals("Available")){
+                            fuelAvailability[i] = "Available";
                         }else {
-                            fuelAvailability[i] = "unavailable";
+                            fuelAvailability[i] = "Unavailable";
                         }
 
                     }
@@ -171,7 +173,7 @@ public class StationList extends AppCompatActivity {
     }
 
     public void accessData(String vehicleId, int id){
-        vehicleLength[id] = vehicleId;
+        vehicleLength[id] = vehicleId.substring(0,vehicleId.length()-2);
     }
 
     private class CustomAdapter extends BaseAdapter {
@@ -201,6 +203,12 @@ public class StationList extends AppCompatActivity {
             vehicleCount.setText(vehicleLength[i]);
             stationAvailability.setText(fuelAvailability[i]);
             address.setText(displayAddresses[i]);
+
+            if(stationAvailability.getText().toString().equals("Available")){
+                stationAvailability.setTextColor(Color.parseColor("#00A300"));
+            }else if(stationAvailability.getText().toString().equals("Unavailable")){
+                stationAvailability.setTextColor(Color.parseColor("#FF0000"));
+            }
 
             return  view1;
         }

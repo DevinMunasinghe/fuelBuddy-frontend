@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".StationList"
-
     >
 
     <LinearLayout
@@ -20,7 +19,7 @@
         android:id="@+id/fuelStationListLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Owner Profile "
+        android:text="Station Owner Profile "
         android:layout_below="@id/linearviewProfileimage"
         android:textAlignment="center"
         android:textSize="20sp"
@@ -58,7 +57,7 @@
         android:id="@+id/profileOwnerphoneLabel"
         android:layout_width="80dp"
         android:layout_height="wrap_content"
-        android:text="Phone : "
+        android:text="Contact : "
         android:layout_below="@id/profileOwnerNameLabel"
         android:textSize="20sp"
         android:textStyle="bold"

@@ -115,8 +115,15 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
 
                     }else{
-                        String stationId = rootObject.get("stationId").getAsString();
-                        System.out.println(stationId);
+                        String name = rootObject.get("name").getAsString();
+                        String phone = rootObject.get("phone").getAsString();
+                        String email = rootObject.get("email").getAsString();
+                        Intent intent=new Intent(MainActivity.this,ownerStationList.class);
+                        intent.putExtra("name",name);
+                        intent.putExtra("phone",phone);
+                        intent.putExtra("email",email);
+//                        System.out.println("NAME CAME"+ name);
+                        startActivity(intent);
                     }
                 }else{
                     Toast.makeText(getApplicationContext(),"Please recheck your credentials",Toast.LENGTH_SHORT).show();

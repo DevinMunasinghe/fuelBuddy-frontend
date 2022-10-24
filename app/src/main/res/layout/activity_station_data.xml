@@ -48,16 +48,18 @@
                 android:id="@+id/stationNameLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Name : "
+                android:text="Name    : "
                 android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:textColor="#454545"/>
 
             <TextView
                 android:id="@+id/stationName1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:textColor="@color/black"
+                android:textStyle="bold|italic"
                 android:layout_marginStart="120dp"
                 android:layout_marginTop="20dp"
                 android:text="TextView"
@@ -66,18 +68,19 @@
                 android:id="@+id/stationPhoneLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Phone : "
+                android:text="Contact : "
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/stationNameLabel"
                 android:layout_marginStart="20dp"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:textColor="#454545"/>
 
             <TextView
                 android:id="@+id/stationAvailablity1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/stationName1"
-
+                android:textColor="#454545"
                 android:layout_marginStart="120dp"
                 android:layout_marginTop="10dp"
                 android:text="TextView"
@@ -98,19 +101,19 @@
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:layout_marginTop="10dp"
-            android:text="Fuel Deatils"
+            android:text="Fuel Stock Availability"
             android:textStyle="bold"
             android:layout_marginStart="40dp"/>
-    <Button
-        android:layout_width="120dp"
-        android:layout_height="45dp"
-        android:id="@+id/queueBTN"
-        android:text="Queue "
-        android:layout_marginStart="250dp"
-        android:backgroundTint="@color/navy_clue"
-        app:cornerRadius = "20dp"
-        android:drawableRight="@drawable/whitearrow"
-        />
+
+        <Button
+            android:id="@+id/queueBTN"
+            android:layout_width="120dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="250dp"
+            android:backgroundTint="@color/navy_clue"
+            android:drawableRight="@drawable/whitearrow"
+            android:text="Queue "
+            app:cornerRadius="20dp" />
 
     </RelativeLayout>
     <androidx.cardview.widget.CardView
@@ -134,7 +137,6 @@
                 android:id="@+id/fuelTypeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Type : "
                 android:layout_marginTop="10dp"
                 android:textColor="#FF2222"
                 android:layout_marginStart="20dp"
@@ -142,20 +144,22 @@
 
             <TextView
                 android:id="@+id/fuelType1Name1"
-                android:layout_width="match_parent"
+                android:layout_width="156dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="90dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:textColor="#FF2222"
                 android:text="TextView"
+                android:textAllCaps="true"
+                android:textColor="#691F6E"
+                android:textStyle="bold"
                 android:textSize="20dp" />
             <TextView
                 android:id="@+id/arrivalTimeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Arrival Time : "
+                android:text="Arrival       :"
                 android:layout_marginTop="10dp"
-                android:textColor="#957C7C"
+                android:textColor="#454545"
                 android:layout_marginStart="20dp"
                 android:layout_below="@id/fuelTypeLabel"
                 android:textSize="15dp" />
@@ -164,9 +168,9 @@
                 android:id="@+id/arrivalTimeVal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="120dp"
+                android:layout_marginStart="110dp"
                 android:layout_marginTop="10dp"
-                android:textColor="#957C7C"
+                android:textColor="#28282B"
                 android:text="TextView"
                 android:textSize="15dp"
                 android:layout_below="@id/fuelType1Name1"/>
@@ -175,9 +179,9 @@
                 android:id="@+id/finishTimeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Finish Time : "
+                android:text="Complete :"
                 android:layout_marginTop="1dp"
-                android:textColor="#957C7C"
+                android:textColor="#f70d1a"
                 android:layout_marginStart="20dp"
                 android:layout_below="@id/arrivalTimeLabel"
                 android:textSize="15dp" />
@@ -185,10 +189,10 @@
                 android:id="@+id/finishTimeVal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="120dp"
+                android:layout_marginStart="110dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="15dp"
-                android:textColor="#957C7C"
+                android:textColor="#28282B"
                 android:text="TextView"
                 android:textSize="15dp"
                 android:layout_below="@id/arrivalTimeVal"/>
@@ -198,10 +202,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Availability "
-                android:layout_marginTop="45dp"
+                android:layout_marginTop="10dp"
                 android:textColor="#957C7C"
-                android:layout_marginStart="230dp"
-                android:textSize="20dp" />
+                android:layout_marginStart="225dp"
+                android:textSize="20dp"
+                android:textStyle="bold|italic"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
@@ -229,26 +234,27 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:text="Type : "
                 android:textColor="#FF2222"
                 android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/fuelType2Name1"
-                android:layout_width="match_parent"
+                android:layout_width="157dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="90dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:textColor="#FF2222"
                 android:text="TextView"
+                android:textAllCaps="true"
+                android:textColor="#691F6E"
+                android:textStyle="bold"
                 android:textSize="20dp" />
             <TextView
                 android:id="@+id/arrivalTime2Label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Arrival Time : "
+                android:text="Arrival       :"
                 android:layout_marginTop="10dp"
-                android:textColor="#957C7C"
+                android:textColor="#454545"
                 android:layout_marginStart="20dp"
                 android:layout_below="@id/fuelType2Label"
                 android:textSize="15dp" />
@@ -257,9 +263,9 @@
                 android:id="@+id/arrivalTime2Val"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="120dp"
+                android:layout_marginStart="110dp"
                 android:layout_marginTop="10dp"
-                android:textColor="#957C7C"
+                android:textColor="#28282B"
                 android:text="TextView"
                 android:textSize="15dp"
                 android:layout_below="@id/fuelType2Name1"/>
@@ -268,33 +274,35 @@
                 android:id="@+id/finishTime2Label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Finish Time : "
+                android:text="Complete :"
                 android:layout_marginTop="1dp"
-                android:textColor="#957C7C"
+                android:textColor="#f70d1a"
                 android:layout_marginStart="20dp"
                 android:layout_below="@id/arrivalTime2Label"
                 android:textSize="15dp" />
+
             <TextView
                 android:id="@+id/finishTime2Val"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="120dp"
-                android:layout_marginTop="1dp"
+                android:layout_below="@id/arrivalTime2Val"
+                android:layout_marginStart="110dp"
+                android:layout_marginTop="3dp"
                 android:layout_marginBottom="15dp"
-                android:textColor="#957C7C"
                 android:text="TextView"
-                android:textSize="15dp"
-                android:layout_below="@id/arrivalTime2Val"/>
+                android:textColor="#28282B"
+                android:textSize="15dp" />
 
             <TextView
                 android:id="@+id/availabilityVal2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Availability "
-                android:layout_marginTop="45dp"
+                android:layout_marginTop="10dp"
                 android:textColor="#957C7C"
-                android:layout_marginStart="230dp"
-                android:textSize="20dp" />
+                android:layout_marginStart="225dp"
+                android:textSize="20dp"
+                android:textStyle="bold|italic"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
@@ -319,7 +327,6 @@
                 android:id="@+id/fuelType3Label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Type : "
                 android:layout_marginTop="10dp"
                 android:textColor="#FF2222"
                 android:layout_marginStart="20dp"
@@ -327,20 +334,22 @@
 
             <TextView
                 android:id="@+id/fuelType3Name1"
-                android:layout_width="match_parent"
+                android:layout_width="155dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="90dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:textColor="#FF2222"
                 android:text="TextView"
+                android:textAllCaps="true"
+                android:textColor="#691F6E"
+                android:textStyle="bold"
                 android:textSize="20dp" />
             <TextView
                 android:id="@+id/arrivalTime3Label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Arrival Time : "
+                android:text="Arrival       :"
                 android:layout_marginTop="10dp"
-                android:textColor="#957C7C"
+                android:textColor="#454545"
                 android:layout_marginStart="20dp"
                 android:layout_below="@id/fuelType3Label"
                 android:textSize="15dp" />
@@ -349,9 +358,9 @@
                 android:id="@+id/arrivalTime3Val"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="120dp"
+                android:layout_marginStart="110dp"
                 android:layout_marginTop="10dp"
-                android:textColor="#957C7C"
+                android:textColor="#28282B"
                 android:text="TextView"
                 android:textSize="15dp"
                 android:layout_below="@id/fuelType3Name1"/>
@@ -360,9 +369,9 @@
                 android:id="@+id/finishTime3Label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Finish Time : "
+                android:text="Complete :"
                 android:layout_marginTop="1dp"
-                android:textColor="#957C7C"
+                android:textColor="#f70d1a"
                 android:layout_marginStart="20dp"
                 android:layout_below="@id/arrivalTime3Label"
                 android:textSize="15dp" />
@@ -370,10 +379,10 @@
                 android:id="@+id/finishTime3Val"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="120dp"
+                android:layout_marginStart="110dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="15dp"
-                android:textColor="#957C7C"
+                android:textColor="#28282B"
                 android:text="TextView"
                 android:textSize="15dp"
                 android:layout_below="@id/arrivalTime3Val"/>
@@ -383,10 +392,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Availability "
-                android:layout_marginTop="45dp"
+                android:layout_marginTop="10dp"
                 android:textColor="#957C7C"
-                android:layout_marginStart="230dp"
-                android:textSize="20dp" />
+                android:layout_marginStart="225dp"
+                android:textSize="20dp"
+                android:textStyle="bold|italic"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
@@ -411,7 +421,6 @@
                 android:id="@+id/fuelType4Label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Type : "
                 android:layout_marginTop="10dp"
                 android:textColor="#FF2222"
                 android:layout_marginStart="20dp"
@@ -419,20 +428,22 @@
 
             <TextView
                 android:id="@+id/fuelType4Name1"
-                android:layout_width="match_parent"
+                android:layout_width="154dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="90dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="10dp"
-                android:textColor="#FF2222"
                 android:text="TextView"
+                android:textAllCaps="true"
+                android:textColor="#691F6E"
+                android:textStyle="bold"
                 android:textSize="20dp" />
             <TextView
                 android:id="@+id/arrivalTime4Label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Arrival Time : "
+                android:text="Arrival       :"
                 android:layout_marginTop="10dp"
-                android:textColor="#957C7C"
+                android:textColor="#454545"
                 android:layout_marginStart="20dp"
                 android:layout_below="@id/fuelType4Label"
                 android:textSize="15dp" />
@@ -441,9 +452,9 @@
                 android:id="@+id/arrivalTime4Val"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="120dp"
+                android:layout_marginStart="110dp"
                 android:layout_marginTop="10dp"
-                android:textColor="#957C7C"
+                android:textColor="#28282B"
                 android:text="TextView"
                 android:textSize="15dp"
                 android:layout_below="@id/fuelType4Name1"/>
@@ -452,9 +463,9 @@
                 android:id="@+id/finishTime4Label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Finish Time : "
+                android:text="Complete :"
                 android:layout_marginTop="1dp"
-                android:textColor="#957C7C"
+                android:textColor="#f70d1a"
                 android:layout_marginStart="20dp"
                 android:layout_below="@id/arrivalTime4Label"
                 android:textSize="15dp" />
@@ -462,10 +473,10 @@
                 android:id="@+id/finishTime4Val"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="120dp"
+                android:layout_marginStart="110dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="15dp"
-                android:textColor="#957C7C"
+                android:textColor="#28282B"
                 android:text="TextView"
                 android:textSize="15dp"
                 android:layout_below="@id/arrivalTime4Val"/>
@@ -474,11 +485,12 @@
                 android:id="@+id/availabilityVal4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="225dp"
+                android:layout_marginTop="10dp"
                 android:text="Availability "
-                android:layout_marginTop="45dp"
                 android:textColor="#957C7C"
-                android:layout_marginStart="230dp"
-                android:textSize="20dp" />
+                android:textSize="20dp"
+                android:textStyle="bold|italic"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
