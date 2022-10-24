@@ -67,6 +67,12 @@ public interface Api {
     @PUT("stations/{id}/{fuelType}")
     Call<Object> updateFuelStock(@Path("id") String id, @Path("fuelType") String fuelType, @Body Fuel fuel);
 
+    @retrofit2.http.Headers("Content-type: application/json")
+    @GET("users/{email}")
+    Call<StatList> viewStationsOfOwner(@Path("email") String email);
 
+    @retrofit2.http.Headers("Content-type: application/json")
+    @GET("users/profiles/{email}")
+    Call<Object> viewUserProfile(@Path("email") String email);
 
 }

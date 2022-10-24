@@ -35,7 +35,7 @@ public class User {
 
     @SerializedName("station")
     @Expose
-    private Station station;
+    private Station[] station;
 
     public User(String name, String phone, String email, String password, String type, String vehicleType, String vehicleId) {
         this.name = name;
@@ -47,7 +47,7 @@ public class User {
         this.vehicleId = vehicleId;
     }
 
-    public User(String name, String phone, String email, String password, String type, Station station) {
+    public User(String name, String phone, String email, String password, String type, Station[] station) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -85,7 +85,7 @@ public class User {
         return vehicleId;
     }
 
-    public Station getStation() {
+    public Station[] getStation() {
         return station;
     }
 

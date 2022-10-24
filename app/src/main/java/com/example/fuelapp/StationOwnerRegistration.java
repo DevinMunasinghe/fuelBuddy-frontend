@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.fuelapp.APIManager.Fuel;
 import com.example.fuelapp.APIManager.RetrofitClient;
+import com.example.fuelapp.APIManager.Station;
 import com.example.fuelapp.APIManager.StationDet;
 import com.example.fuelapp.APIManager.User;
 
@@ -27,8 +28,6 @@ public class StationOwnerRegistration extends AppCompatActivity {
     //variables
     EditText name, phone, email, password, fuelStationName, fuelStationId,stationAddress;
     Button registerButton;
-
-    String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
 
 
     @Override
@@ -71,7 +70,10 @@ public class StationOwnerRegistration extends AppCompatActivity {
             }else if(TextUtils.isEmpty(fuelStationName.getText().toString())){
                 fuelStationName.requestFocus();
                 fuelStationName.setError("Please enter station Name");
-            }else if(TextUtils.isEmpty(fuelStationId.getText().toString())){
+            }else if(TextUtils.isEmpty(stationAddress.getText().toString())){
+                stationAddress.requestFocus();
+                stationAddress.setError("Please enter station Address");
+            } else if(TextUtils.isEmpty(fuelStationId.getText().toString())){
                 fuelStationId.requestFocus();
                 fuelStationId.setError("Please enter station Id");
             }
@@ -83,30 +85,40 @@ public class StationOwnerRegistration extends AppCompatActivity {
 
                 //creating station owner object
                 String type = "owner";
+
+                Station [] stations = new Station[1];
+
+                Station stationData = new Station(fuelStationName.getText().toString(),
+                        fuelStationId.getText().toString());
+                stations[0] =stationData;
+
                 User stationOwner = new User(name.getText().toString(),
                                             phone.getText().toString(),
                                             email.getText().toString(),
                                             password.getText().toString(),
-                                            type,
-                                            fuelStationName.getText().toString(),
-                                            fuelStationId.getText().toString());
+                                            type,stations);
 
                 //creating station object
-                String address = "NO 1569/KL,Kotte";
+                String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
 
-                //create fuels
-//                Fuel fuel1 = new Fuel("Petrol 92",)
 
-                Fuel [] fuel =new Fuel[0];
+                String current = date + " " + currentTime;
 
+                Fuel fuel1 = new Fuel("Diesel",current," ", "Available");
+                Fuel fuel2 = new Fuel("Petrol 92",current," ", "Available");
+                Fuel fuel3 = new Fuel("Petrol 95",current," ", "Available");
+                Fuel fuel4 = new Fuel("Super Diesel",current," ", "Available");
+
+               Fuel [] fuels = {fuel1,fuel2,fuel3,fuel4};
 
 
                 StationDet stationDet = new StationDet(fuelStationId.getText().toString(),
                         fuelStationName.getText().toString(),
-                        address,
+                        stationAddress.getText().toString(),
                         phone.getText().toString(),
                         email.getText().toString(),
-                        fuel);
+                        fuels);
 
 
                 registerStationOwner(stationOwner,stationDet);
@@ -126,6 +138,7 @@ public class StationOwnerRegistration extends AppCompatActivity {
         email.setText("");
         password.setText("");
         fuelStationName.setText("");
+        stationAddress.setText("");
         fuelStationId.setText("");
     }
 

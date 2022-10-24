@@ -33,7 +33,9 @@
                 android:layout_marginTop="15dp"
                 android:text="Queue Details"
                 android:textSize="30dp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                />
+
 
             <TextView
                 android:id="@+id/totVehicleLabel"
@@ -41,21 +43,20 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/Topic"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="25dp"
-                android:text="Total Vehicle Count"
+                android:layout_marginTop="14dp"
+                android:text="Total Vehicles"
                 android:textSize="25dp"
                 android:textStyle="bold" />
-
 
             <TextView
                 android:id="@+id/totVehicleValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="280dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="70dp"
                 android:text="25"
                 android:textSize="25dp"
-
+                android:textColor="@color/black"
                 android:textStyle="bold" />
 
             <TextView
@@ -67,7 +68,7 @@
                 android:layout_marginTop="15dp"
                 android:drawableLeft="@drawable/ic_baseline_directions_car_24"
                 android:drawablePadding="8dp"
-                android:text="Total Car Count"
+                android:text="Total Cars"
                 android:textSize="20dp" />
 
             <TextView
@@ -75,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/totVehicleValue"
-                android:layout_marginStart="286dp"
+                android:layout_marginStart="280dp"
                 android:layout_marginTop="15dp"
                 android:text="35"
                 android:textSize="20dp" />
@@ -89,7 +90,7 @@
                 android:layout_marginTop="10dp"
                 android:drawableLeft="@drawable/ic_baseline_directions_bus_24"
                 android:drawablePadding="8dp"
-                android:text="Total Bus Count"
+                android:text="Total Buses"
                 android:textSize="20dp" />
 
             <TextView
@@ -111,7 +112,7 @@
                 android:layout_marginTop="10dp"
                 android:drawableLeft="@drawable/threewheel"
                 android:drawablePadding="8dp"
-                android:text="Total ThreeWheel Count"
+                android:text="Total ThreeWheelers"
                 android:textSize="20dp" />
 
             <TextView
@@ -133,7 +134,7 @@
                 android:layout_marginTop="10dp"
                 android:drawableLeft="@drawable/bike"
                 android:drawablePadding="8dp"
-                android:text="Total Bike Count"
+                android:text="Total Bikes"
                 android:textSize="20dp" />
 
             <TextView
@@ -152,24 +153,24 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/totBikelLabel"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="25dp"
+                android:layout_marginTop="24dp"
                 android:drawableLeft="@drawable/clockred"
                 android:drawablePadding="8dp"
                 android:text="Waiting Time"
                 android:textColor="#FF2222"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/waitingCount"
-                android:layout_width="wrap_content"
+                android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/totBikeCount"
-                android:layout_marginStart="280dp"
+                android:layout_marginStart="230dp"
                 android:layout_marginTop="25dp"
                 android:text="35"
                 android:textColor="#FF2222"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
 
             <TextView
@@ -180,9 +181,9 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="15dp"
                 android:drawablePadding="8dp"
-                android:text="Vehicle to be pumped "
+                android:text="Next To Pump "
 
-                android:textSize="20dp" />
+                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/vehicleToPumpLabel2"
@@ -193,8 +194,8 @@
                 android:layout_marginTop="1dp"
                 android:layout_marginBottom="30dp"
                 android:drawablePadding="8dp"
-                android:text="next join time"
-                android:textSize="20dp" />
+                android:text="Joined Time"
+                android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/nextJoinCount"

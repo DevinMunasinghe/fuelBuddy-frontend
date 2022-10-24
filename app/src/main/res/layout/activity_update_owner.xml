@@ -33,7 +33,7 @@
                 android:id="@+id/fuelStationRegLabel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Update Station Details"
+                android:text="Update Fuel Socks"
                 android:textAlignment="center"
                 android:textSize="20sp"
                 android:textColor="@color/navy_clue"
@@ -81,7 +81,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SELECT DATE"
+                    android:text="ARRIVAL DATE"
                     android:id="@+id/btn_arrival_date"
                     android:layout_marginTop="18dp"
                     android:layout_marginLeft="10dp"
@@ -115,7 +115,7 @@
                     android:id="@+id/btn_arrival_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SELECT Time"
+                    android:text="ARRIVAL TIME"
 
                     android:layout_marginTop="18dp"
                     android:layout_marginLeft="10dp"
@@ -151,7 +151,7 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SELECT DATE"
+                    android:text="END DATE"
                     android:id="@+id/btn_endup_date"
                     android:layout_marginTop="18dp"
                     android:layout_marginLeft="10dp"
@@ -188,7 +188,7 @@
                     android:id="@+id/btn_end_up_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="SELECT Time"
+                    android:text="END TIME"
 
                     android:layout_marginTop="18dp"
                     android:layout_marginLeft="10dp"

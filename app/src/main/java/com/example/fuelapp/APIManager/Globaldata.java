@@ -14,6 +14,8 @@ public class Globaldata {
 
     private String notification_indexOne;
     private String notification_indexTwo;
+    private String notification_indexThree;
+    private String Notification_indexFour;
 
     private Globaldata() {
     }
@@ -32,5 +34,21 @@ public class Globaldata {
 
     public void setNotification_indexTwo(String notification_indexTwo) {
         this.notification_indexTwo = notification_indexTwo;
+    }
+
+    public String getNotification_indexThree() {
+        return notification_indexThree;
+    }
+
+    public void setNotification_indexThree(String notification_indexThree) {
+        this.notification_indexThree = notification_indexThree;
+    }
+
+    public String getNotification_indexFour() {
+        return Notification_indexFour;
+    }
+
+    public void setNotification_indexFour(String notification_indexFour) {
+        Notification_indexFour = notification_indexFour;
     }
 }
