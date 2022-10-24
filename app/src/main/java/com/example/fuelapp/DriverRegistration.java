@@ -7,6 +7,8 @@ import android.os.StrictMode;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -22,7 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class DriverRegistration extends AppCompatActivity {
+public class DriverRegistration extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     //variables
     EditText name, phone, email, password, vRegNo, vehicleType;
@@ -49,13 +51,26 @@ public class DriverRegistration extends AppCompatActivity {
 
         registerButton = findViewById(R.id.driverRegBtn);
 
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.vehicle_type_array, android.R.layout.simple_spinner_item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
+        vehicle_type_spinner.setOnItemSelectedListener(this);
+
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 registerDriver(v);
             }
         });
+
+
     }
+
+
+
 
 
 
@@ -137,4 +152,13 @@ public class DriverRegistration extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+        String choice = adapterView.getItemAtPosition(position).toString();
     }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+}
