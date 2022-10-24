@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -48,7 +50,17 @@ public class StationOwnerRegistration extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                registerOwner(v);
+//                registerOwner(v);
+                Toasty.Config.reset();
+                Toasty.Config.getInstance().setGravity(200,0, 800).apply();
+                //error Toast
+                Toasty.error(getApplicationContext(), "Internal Error Occured", Toast.LENGTH_LONG, true).show();
+                //Success Toast
+                Toasty.success(getApplicationContext(), "Owner Details Registered Successfully!", Toast.LENGTH_LONG, true).show();
+                //Warning Toast
+                Toasty.warning(getApplicationContext(), "Owner Details Registered Successfully!", Toast.LENGTH_LONG, true).show();
+                //Info Toast
+                Toasty.info(getApplicationContext(), "Owner Details Registered Successfully!", Toast.LENGTH_LONG, true).show();
             }
         });
     }
@@ -152,13 +164,15 @@ public class StationOwnerRegistration extends AppCompatActivity {
             public void onResponse(Call<User>  call, Response<User> response) {
                 if(response.isSuccessful()){
                     registerAStation(stationDet);
-                    Toast.makeText(getApplicationContext(),"Owner Details Registered Successfully",Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(),"Owner Details Registered Successfully",Toast.LENGTH_SHORT).show();
+                    Toasty.success(getApplicationContext(), "Owner Details Registered Successfully!", Toast.LENGTH_LONG, true).show();
                 }
             }
 
             @Override
             public void onFailure(Call<User>   call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"Internal Error Occured",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(),"Internal Error Occured",Toast.LENGTH_SHORT).show();
+                Toasty.error(getApplicationContext(), "Internal Error Occured", Toast.LENGTH_LONG, true).show();
             }
         });
     }
@@ -171,13 +185,15 @@ public class StationOwnerRegistration extends AppCompatActivity {
             @Override
             public void onResponse(Call<StationDet>  call, Response<StationDet> response) {
                 if(response.isSuccessful()){
-                    Toast.makeText(getApplicationContext(),"Station Created Successfully",Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getApplicationContext(),"Station Created Successfully",Toast.LENGTH_SHORT).show();
+                    Toasty.success(getApplicationContext(), "Station Created Successfully!", Toast.LENGTH_LONG, true).show();
                 }
             }
 
             @Override
             public void onFailure(Call<StationDet>   call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"Internal Error Occured",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(),"Internal Error Occured",Toast.LENGTH_SHORT).show();
+                Toasty.error(getApplicationContext(), "Internal Error Occured", Toast.LENGTH_LONG, true).show();
             }
         });
     }
