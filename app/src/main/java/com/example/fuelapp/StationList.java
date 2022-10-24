@@ -32,6 +32,7 @@ import retrofit2.Response;
 
 public class StationList extends AppCompatActivity {
 
+    //variables
     ListView stationListView;
 
     String[] ids;
@@ -55,9 +56,10 @@ public class StationList extends AppCompatActivity {
         getStations();
         setContentView(R.layout.activity_station_list);
 
-        Intent i = new Intent();
+        Intent i = getIntent();
         String vehicleId = i.getStringExtra("vehicleId");
 
+        //id identification
         stationListView = findViewById(R.id.stationListView);
         CustomAdapter customAdapter = new CustomAdapter();
 
@@ -73,13 +75,9 @@ public class StationList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
-
     }
 
+    //view all the available stations with web API
     public  void getStations(){
 
         Call<StationLists> call = RetrofitClient.getInstance().getMyApi().viewStations();
@@ -148,6 +146,7 @@ public class StationList extends AppCompatActivity {
 
     }
 
+    //get the stationQueue count with web API
     public void getStationQueueCount(String stationId, int i){
         Call<Object> call = RetrofitClient.getInstance().getMyApi().getQueueVehicleCount(stationId);
 
@@ -176,6 +175,7 @@ public class StationList extends AppCompatActivity {
         vehicleLength[id] = vehicleId.substring(0,vehicleId.length()-2);
     }
 
+    //manage data with custom adapter
     private class CustomAdapter extends BaseAdapter {
         @Override
         public int getCount() {

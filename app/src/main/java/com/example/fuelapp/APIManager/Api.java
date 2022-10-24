@@ -38,11 +38,6 @@ public interface Api {
     @GET("stations/fuel/{stationId}")
     Call<FuelList> getFulesInAStation(@Path("stationId") String stationId);
 
-    //search in the stationList
-
-    //update station fuel
-
-    //queue manage
     @retrofit2.http.Headers("Content-type: application/json")
     @GET("queues/{stationId}/{vehicleType}")
     Call<Object> getQueueLengthByVehicle(@Path("stationId") String stationId,@Path("vehicleType") String vehicleType);

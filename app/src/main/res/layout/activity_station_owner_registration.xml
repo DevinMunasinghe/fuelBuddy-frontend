@@ -61,6 +61,7 @@
                 android:textSize="14sp"
 
                 />
+
             <EditText
                 android:id="@+id/ownerPhoneNumber"
                 android:layout_width="match_parent"
@@ -71,10 +72,10 @@
                 android:drawablePadding="8dp"
                 android:ems="10"
                 android:hint="@string/phone"
-                android:inputType="textPersonName"
+                android:inputType="phone"
                 android:padding="8dp"
-                android:textSize="14sp"
-                />
+                android:textSize="14sp" />
+
             <EditText
                 android:id="@+id/ownerEmail"
                 android:layout_width="match_parent"
@@ -86,8 +87,7 @@
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 android:padding="8dp"
-                android:textSize="14sp"
-                />
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/ownerPassword"
@@ -115,6 +115,7 @@
                 android:padding="8dp"
                 android:textSize="14sp"
                 />
+
             <EditText
                 android:id="@+id/stationAddress"
                 android:layout_width="match_parent"
@@ -124,10 +125,10 @@
                 android:drawableLeft="@drawable/ic_baseline_maps_home_work_24"
                 android:drawablePadding="8dp"
                 android:hint="Address"
-                android:inputType="textPersonName"
+                android:inputType="textPostalAddress"
                 android:padding="8dp"
-                android:textSize="14sp"
-                />
+                android:textSize="14sp" />
+
             <EditText
                 android:id="@+id/stationId"
                 android:layout_width="match_parent"
@@ -137,10 +138,9 @@
                 android:drawableLeft="@drawable/ic_baseline_123_24"
                 android:drawablePadding="8dp"
                 android:hint="@string/stationID"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:padding="8dp"
-                android:textSize="14sp"
-                />
+                android:textSize="14sp" />
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"

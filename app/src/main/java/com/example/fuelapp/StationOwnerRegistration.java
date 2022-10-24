@@ -35,6 +35,7 @@ public class StationOwnerRegistration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_station_owner_registration);
 
+        //id identification
         name = findViewById(R.id.ownerNameInput);
         phone = findViewById(R.id.ownerPhoneNumber);
         email = findViewById(R.id.ownerEmail);
@@ -45,6 +46,7 @@ public class StationOwnerRegistration extends AppCompatActivity {
 
         registerButton = findViewById(R.id.ownerRegBtn);
 
+        //trigger register button
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -80,9 +82,6 @@ public class StationOwnerRegistration extends AppCompatActivity {
             else{
 
                 //connection to backend for registration of a station Owner
-                //register owner as a user + register the station as well
-                //set the userType as "Owner"
-
                 //creating station owner object
                 String type = "owner";
 
@@ -128,7 +127,7 @@ public class StationOwnerRegistration extends AppCompatActivity {
             }
 
         }catch(Exception e){
-            Toast.makeText(getApplicationContext(),"Internal Error occured refresh",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Internal Error occurred refresh",Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -177,7 +176,7 @@ public class StationOwnerRegistration extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<StationDet>   call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"Internal Error Occured",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Internal Error Occurred",Toast.LENGTH_SHORT).show();
             }
         });
     }

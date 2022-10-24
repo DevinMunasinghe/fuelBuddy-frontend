@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 
 import com.example.fuelapp.APIManager.Fuel;
@@ -34,7 +35,7 @@ import retrofit2.Response;
 
 public class updateOwner extends AppCompatActivity implements AdapterView.OnItemSelectedListener,View.OnClickListener {
 
-    EditText fuelType;
+    //variables
     TextView arrivalTime,  endUpTime,arrivalDate , EndUpDate ;
     Button updateDetailsBtn;
     Spinner spinner, availability_spinner;
@@ -57,6 +58,7 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_owner);
 
+        //id identification
         arrivalDate = findViewById(R.id.arrivalUpdateInput);
         arrivalTime =findViewById(R.id.arrivalUpdateTimeInput);
         EndUpDate = findViewById(R.id.completeUpdateInput);
@@ -72,7 +74,7 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
         btnCompleteDatePicker=(Button)findViewById(R.id.btn_endup_date);
         btnCompleteTimePicker= (Button)findViewById(R.id.btn_end_up_time);
 
-
+        //spinner management
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.fuel_type_array, android.R.layout.simple_spinner_item);
 
@@ -95,6 +97,8 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
         btnCompleteDatePicker.setOnClickListener(this);
         btnCompleteTimePicker.setOnClickListener(this);
 
+
+        //trigger update button
         updateDetailsBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -117,6 +121,7 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
                 String availability = availability_spinner.getSelectedItem().toString();
 
                 Fuel fuel = new Fuel(arrivalDateTime,completeDateTime,availability);
+                //triggering the update of fuel stock
                 updateStock(stationId,fuelType,fuel);
 
             }
@@ -124,9 +129,8 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
 
         id = getIntent().getStringExtra("stationId");
 
+        //trigger get One station fuel stocks update data
         getData(id);
-
-
     }
 
 
@@ -136,9 +140,11 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
         call.enqueue(new Callback<FuelList>() {
             @Override
             public void onResponse(Call<FuelList>  call, Response<FuelList> response) {
-                Gson gson = new Gson();
-                List<Fuel> list = response.body().getFuelList();
-                accessArrayList(list);
+                if(response.isSuccessful()){
+                    Gson gson = new Gson();
+                    List<Fuel> list = response.body().getFuelList();
+                    accessArrayList(list);
+                }
             }
 
             @Override
@@ -148,6 +154,7 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
         });
     }
 
+    //access data within the response of getData() method
     public void accessArrayList(List<Fuel> list){
         fuels = list;
 
@@ -233,7 +240,7 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
     }
 
 
-
+    //management of a spinner selection
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
 
@@ -282,14 +289,18 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
     public void onNothingSelected(AdapterView<?> adapterView) {
     }
 
+    //update the fuel stock data with web API
     public void updateStock(String id, String fuelType, Fuel fuel){
 
         Call<Object> call = RetrofitClient.getInstance().getMyApi().updateFuelStock(id,fuelType,fuel);
         call.enqueue(new Callback<Object>() {
             @Override
             public void onResponse(Call<Object>  call, Response<Object> response) {
-                Gson gson = new Gson();
-               System.out.println(gson.toJsonTree(response.body()));
+                if(response.isSuccessful()){
+                    Gson gson = new Gson();
+                    System.out.println(gson.toJsonTree(response.body()));
+                    Toast.makeText(getApplicationContext(),"Fuel stock successfully updated!",Toast.LENGTH_SHORT);
+                }
             }
 
             @Override
@@ -299,6 +310,7 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
         });
     }
 
+    //date and time picker management
     @Override
     public void onClick(View v) {
         System.out.println("onclick>>"+v);

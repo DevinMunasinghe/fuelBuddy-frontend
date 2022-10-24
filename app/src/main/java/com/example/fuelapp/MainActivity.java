@@ -30,6 +30,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    //variables
     TextView newUser;
     EditText email, password;
     Button loginBtn;
@@ -40,12 +41,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        //id identification
         newUser=findViewById(R.id.registerPageLink);
         email=findViewById(R.id.emailInput);
         password=findViewById(R.id.loginPasswordInput);
         loginBtn=findViewById(R.id.loginButton);
 
+        //trigger button click for a new user registration
         newUser.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //trigger button click for login
         loginBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -79,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 }catch (Exception e){
-                    Toast.makeText(getApplicationContext(),"Internal Error occured refresh",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Internal Error occurred refresh",Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -89,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //login function connected with the Rest API
+    //login function connected with the web API
     public void loginUser(LoginResult loginResult){
         Globaldata sharedData = Globaldata.getInstance();
         Call<Object> call = RetrofitClient.getInstance().getMyApi().login(loginResult);
@@ -122,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("name",name);
                         intent.putExtra("phone",phone);
                         intent.putExtra("email",email);
-//                        System.out.println("NAME CAME"+ name);
                         startActivity(intent);
                     }
                 }else{
@@ -137,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //To empty the input fields
     public void emptyFilledData(){
         email.setText("");
         password.setText("");

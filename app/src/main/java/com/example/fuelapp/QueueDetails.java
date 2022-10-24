@@ -31,6 +31,7 @@ import retrofit2.Response;
 
 public class QueueDetails extends AppCompatActivity {
 
+    //variables
     TextView totalVehicleCount,totalCarCount, totalBusCount, totalThreeWheelCount , totalBikeCount,waitingTime,vehicleToPump;
     Button joinToQueueBtn , exitBeforePumpBtn , exitAfterPumpBtn;
 
@@ -42,20 +43,19 @@ public class QueueDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_queue_details);
 
-        Intent intent =  new Intent();
+        //obtaining passed intent
+        Intent intent =  getIntent();
         String stationId = intent.getStringExtra("stationId");
 
         Globaldata sharedData = Globaldata.getInstance();
         String vehicleId = sharedData.getNotification_indexOne();
         String vehicleType = sharedData.getNotification_indexTwo();
 
-
-
+        //setting the date
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-//        System.out.println(">>>>"+date);
         String currentTime = new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date());
-//        System.out.println("time>>>>"+currentTime);
 
+        //id identification
         totalVehicleCount = findViewById(R.id.totVehicleValue);
         totalCarCount = findViewById(R.id.totCarCount);
         totalBusCount = findViewById(R.id.totBusCount);
@@ -68,25 +68,28 @@ public class QueueDetails extends AppCompatActivity {
         exitBeforePumpBtn = findViewById(R.id.exitBeforePumpBtn);
         exitAfterPumpBtn = findViewById(R.id.exitAfterPumpBtn);
 
-        //change the hard codeded station id to dynamic variable
-        getQueueLengthsByVehicleType("0001","Car");
-        getQueueLengthsByVehicleType("0001","Bus");
-        getQueueLengthsByVehicleType("0001","Three-Wheel");
-        getQueueLengthsByVehicleType("0001","Bike");
+        //triggering the methods to retrieve vehicle count by type
+        getQueueLengthsByVehicleType(stationId,"Car");
+        getQueueLengthsByVehicleType(stationId,"Bus");
+        getQueueLengthsByVehicleType(stationId,"Three-Wheel");
+        getQueueLengthsByVehicleType(stationId,"Bike");
 
-        getQueueLength("0001");
-        getQueueWaitTime("0001");
+        //triggering the queue length
+        getQueueLength(stationId);
+
+        //triggering the total wait time
+        getQueueWaitTime(stationId);
 
         String current = date + " " + currentTime;
 
 
-
+        //triggering the onclick for join to queue
         joinToQueueBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                String idStation = "0001";
-                String vehicle = "KGT 0774";
-                String vehicleT = "Car";
+                String idStation = stationId;
+                String vehicle = vehicleId;
+                String vehicleT = vehicleType;
                 String joined = current;
                 String status = "Joined to the queue";
 
@@ -106,11 +109,12 @@ public class QueueDetails extends AppCompatActivity {
             }
         });
 
+        //triggering the onclick for exit before pump button
         exitBeforePumpBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                String idStation = "0001";
-                String vehicle = "ABC 0003";
+                String idStation = stationId;
+                String vehicle = vehicleId;
                 String joined = current;
                 String exit = current;
                 String status = "Exit before Pump";
@@ -122,11 +126,12 @@ public class QueueDetails extends AppCompatActivity {
             }
         });
 
+        //triggering the onclick for exit after pump button
         exitAfterPumpBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                String idStation = "0001";
-                String vehicle = "ABC 0003";
+                String idStation = stationId;
+                String vehicle = vehicleId;
                 String joined = current;
                 String exit = current;
                 String status = "Exit After Pump";
@@ -139,6 +144,7 @@ public class QueueDetails extends AppCompatActivity {
 
     }
 
+    //retrieve the length of the queue by vehicle type
     public void getQueueLengthsByVehicleType(String stationId, String vehicleType){
 
         Call<Object> call = RetrofitClient.getInstance().getMyApi().getQueueLengthByVehicle(stationId,vehicleType);
@@ -177,6 +183,7 @@ public class QueueDetails extends AppCompatActivity {
 
     }
 
+    //retrieving total queue length
     public void getQueueLength(String stationId){
 
         Call<Object> call = RetrofitClient.getInstance().getMyApi().getQueueVehicleCount(stationId);
@@ -204,6 +211,7 @@ public class QueueDetails extends AppCompatActivity {
 
     }
 
+    //retrieving the total wait time
     public void getQueueWaitTime(String stationId){
 
         Call<Object> call = RetrofitClient.getInstance().getMyApi().getQueueWaitingTime(stationId);
@@ -230,6 +238,7 @@ public class QueueDetails extends AppCompatActivity {
 
     }
 
+    //executing the join to queue with web API
     public void joinToQueue(Queue queue){
 
         Call<Object> call = RetrofitClient.getInstance().getMyApi().joinAQueue(queue);
@@ -243,7 +252,7 @@ public class QueueDetails extends AppCompatActivity {
                 JsonObject rootObject = element.getAsJsonObject();
                 String message = rootObject.get("data").getAsString();
 
-//                System.out.println(message);
+                System.out.println(message);
                 Toast.makeText(getApplicationContext(),"Joined To Queue",Toast.LENGTH_SHORT).show();
 
             }
@@ -257,6 +266,7 @@ public class QueueDetails extends AppCompatActivity {
 
     }
 
+    //executing function to check weather vehicle is already in queue with web API
     public void checkJoinedVehicle(String vehicleId){
 
         Call<Object> call = RetrofitClient.getInstance().getMyApi().checkJoinedVehicle(vehicleId);
@@ -269,7 +279,6 @@ public class QueueDetails extends AppCompatActivity {
                 JsonElement element = gson.toJsonTree(response.body());
                 JsonObject rootObject = element.getAsJsonObject();
                 String message = rootObject.get("data").getAsString();
-//                System.out.println(message);
                 vehicleJoined = message;
 
             }
@@ -283,6 +292,7 @@ public class QueueDetails extends AppCompatActivity {
 
     }
 
+    //executing function to exit queue before pump with web API
     public void exitQueueBeforePump(String stationId,String vehicleId, Queue queue){
 
         Call<Object> call = RetrofitClient.getInstance().getMyApi().updateJoinedQueue(stationId,vehicleId,queue);
@@ -311,6 +321,7 @@ public class QueueDetails extends AppCompatActivity {
 
     }
 
+    //executing function to exit queue after pump with web API
     public void exitQueueAfterPump(String stationId,String vehicleId, Queue queue){
 
         Call<Object> call = RetrofitClient.getInstance().getMyApi().updateJoinedQueue(stationId,vehicleId,queue);

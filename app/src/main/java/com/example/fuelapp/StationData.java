@@ -23,6 +23,7 @@ import retrofit2.Response;
 
 public class StationData extends AppCompatActivity {
 
+    //variables
     TextView stationName, stationAvailability, fuelType1 , fuelType2, fuelType3, fuelType4, arrivalTimeVal1,arrivalTimeVal2,arrivalTimeVal3,arrivalTimeVal4,finishTime1, finishTime2, finishTime3, finishTime4;
     TextView availability1,availability2,availability3,availability4;
     Button queueBtn;
@@ -30,6 +31,7 @@ public class StationData extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //id identification
         setContentView(R.layout.activity_station_data);
         stationName = findViewById(R.id.stationName1);
         stationAvailability=findViewById(R.id.stationAvailablity1);
@@ -58,8 +60,10 @@ public class StationData extends AppCompatActivity {
         stationAvailability.setText(intent.getStringExtra("stationAvailability"));
         String stationId = intent.getStringExtra("stationId");
 
+        //triggering to retrieve fuel data of a specific station
         getFuelData(stationId);
 
+        //triggering the onclick for queue button
         queueBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -73,7 +77,7 @@ public class StationData extends AppCompatActivity {
     }
 
 
-
+    // retrieving the fuel data from station and display
     public void getFuelData(String stationId){
 
         Call<FuelList> call = RetrofitClient.getInstance().getMyApi().getFulesInAStation("0001");
@@ -132,7 +136,6 @@ public class StationData extends AppCompatActivity {
             @Override
             public void onFailure(Call<FuelList> call, Throwable t) {
                 Log.e("Error", t.getMessage());
-
 
             }
         });
