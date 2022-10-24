@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -28,6 +30,7 @@ public class StationOwnerRegistration extends AppCompatActivity {
     //variables
     EditText name, phone, email, password, fuelStationName, fuelStationId,stationAddress;
     Button registerButton;
+
 
 
     @Override
@@ -56,6 +59,10 @@ public class StationOwnerRegistration extends AppCompatActivity {
     }
 
     public void registerOwner(View view){
+        //toast creation
+        Toasty.Config.reset();
+        Toasty.Config.getInstance().setGravity(Gravity.CENTER_VERTICAL|Gravity.START,240, -620).apply();
+
         try{
             if(TextUtils.isEmpty(name.getText().toString())){
                 name.requestFocus();
@@ -127,7 +134,7 @@ public class StationOwnerRegistration extends AppCompatActivity {
             }
 
         }catch(Exception e){
-            Toast.makeText(getApplicationContext(),"Internal Error occurred refresh",Toast.LENGTH_SHORT).show();
+            Toasty.warning(getApplicationContext(), "Cannot proceed please recheck details", Toast.LENGTH_LONG, true).show();
         }
     }
 
@@ -143,7 +150,10 @@ public class StationOwnerRegistration extends AppCompatActivity {
 
     public void registerStationOwner(User user, StationDet stationDet){
 
-        System.out.println(user);
+        //toast creation
+        Toasty.Config.reset();
+        Toasty.Config.getInstance().setGravity(Gravity.CENTER_VERTICAL|Gravity.START,240, -620).apply();
+
         Call<User> call = RetrofitClient.getInstance().getMyApi().createUser(user);
 
         call.enqueue(new Callback<User>() {
@@ -151,18 +161,22 @@ public class StationOwnerRegistration extends AppCompatActivity {
             public void onResponse(Call<User>  call, Response<User> response) {
                 if(response.isSuccessful()){
                     registerAStation(stationDet);
-                    Toast.makeText(getApplicationContext(),"Owner Details Registered Successfully",Toast.LENGTH_SHORT).show();
+                    Toasty.success(getApplicationContext(), "Owner Details Registered Successfully!", Toast.LENGTH_LONG, true).show();
                 }
             }
 
             @Override
             public void onFailure(Call<User>   call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"Internal Error Occured",Toast.LENGTH_SHORT).show();
+                Toasty.error(getApplicationContext(), "Internal Error Occurred", Toast.LENGTH_LONG, true).show();
             }
         });
     }
 
     public void registerAStation(StationDet stationDet){
+
+        //toast creation
+        Toasty.Config.reset();
+        Toasty.Config.getInstance().setGravity(Gravity.CENTER_VERTICAL|Gravity.START,240, -620).apply();
 
         Call<StationDet> call = RetrofitClient.getInstance().getMyApi().createStation(stationDet);
 
@@ -170,13 +184,14 @@ public class StationOwnerRegistration extends AppCompatActivity {
             @Override
             public void onResponse(Call<StationDet>  call, Response<StationDet> response) {
                 if(response.isSuccessful()){
-                    Toast.makeText(getApplicationContext(),"Station Created Successfully",Toast.LENGTH_SHORT).show();
+                    Toasty.success(getApplicationContext(), "Station Created Successfully!", Toast.LENGTH_LONG, true).show();
                 }
             }
 
             @Override
             public void onFailure(Call<StationDet>   call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"Internal Error Occurred",Toast.LENGTH_SHORT).show();
+                Toasty.error(getApplicationContext(), "Internal Error Occurred", Toast.LENGTH_LONG, true).show();
+
             }
         });
     }

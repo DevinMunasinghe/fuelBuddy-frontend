@@ -80,7 +80,7 @@ public class StationData extends AppCompatActivity {
     // retrieving the fuel data from station and display
     public void getFuelData(String stationId){
 
-        Call<FuelList> call = RetrofitClient.getInstance().getMyApi().getFulesInAStation("0001");
+        Call<FuelList> call = RetrofitClient.getInstance().getMyApi().getFulesInAStation(stationId);
         call.enqueue(new Callback<FuelList>() {
             @Override
             public void onResponse(Call<FuelList>  call, Response<FuelList>response) {

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,6 +20,7 @@ import com.example.fuelapp.APIManager.RetrofitClient;
 import com.example.fuelapp.APIManager.StationDet;
 import com.example.fuelapp.APIManager.User;
 
+import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -62,8 +64,7 @@ public class DriverRegistration extends AppCompatActivity implements AdapterView
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                registerDriver(v);
-            }
+                registerDriver(v);}
         });
 
 
@@ -72,6 +73,10 @@ public class DriverRegistration extends AppCompatActivity implements AdapterView
 
     //registration of a driver
     public void registerDriver(View view){
+
+        Toasty.Config.reset();
+        Toasty.Config.getInstance().setGravity(Gravity.CENTER_VERTICAL|Gravity.START,240, -580).apply();
+
         try{
             if(TextUtils.isEmpty(name.getText().toString())){
                 name.requestFocus();
@@ -109,7 +114,7 @@ public class DriverRegistration extends AppCompatActivity implements AdapterView
             }
 
         }catch(Exception e){
-            Toast.makeText(getApplicationContext(),"Internal Error occurred refresh",Toast.LENGTH_SHORT).show();
+            Toasty.warning(getApplicationContext(), "Cannot proceed please recheck details", Toast.LENGTH_LONG, true).show();
         }
     }
 
@@ -124,6 +129,9 @@ public class DriverRegistration extends AppCompatActivity implements AdapterView
     //registering a user as a driver through web API call.
     public void registerVehicleDriver(User user){
 
+        Toasty.Config.reset();
+        Toasty.Config.getInstance().setGravity(Gravity.CENTER_VERTICAL|Gravity.START,240, -580).apply();
+
         Call<User> call = RetrofitClient.getInstance().getMyApi().createUser(user);
 
         call.enqueue(new Callback<User>() {
@@ -131,15 +139,15 @@ public class DriverRegistration extends AppCompatActivity implements AdapterView
             public void onResponse(Call<User>  call, Response<User> response) {
 
                 if(response.isSuccessful()){
-                    Toast.makeText(getApplicationContext(),"Driver Registered Successfully",Toast.LENGTH_SHORT).show();
+                    Toasty.success(getApplicationContext(), "Driver Registered Successfully!", Toast.LENGTH_LONG, true).show();
                 }else {
-                    Toast.makeText(getApplicationContext(),"Registration Unsuccessful",Toast.LENGTH_SHORT).show();
+                    Toasty.error(getApplicationContext(), "Registration Unsuccessful", Toast.LENGTH_LONG, true).show();
                 }
             }
 
             @Override
             public void onFailure(Call<User>   call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"Internal Error2",Toast.LENGTH_SHORT).show();
+                Toasty.error(getApplicationContext(), "Internal Error Occurred", Toast.LENGTH_LONG, true).show();
             }
         });
     }

@@ -122,8 +122,6 @@ public class StationList extends AppCompatActivity {
                         fuelStatus[j] = fuels[j].getStatus();
                         if(fuels[j].getStatus().equals("available") || fuels[j].getStatus().equals("Available")){
                             fuelAvailability[i] = "Available";
-                        }else {
-                            fuelAvailability[i] = "Unavailable";
                         }
 
                     }
@@ -132,8 +130,6 @@ public class StationList extends AppCompatActivity {
                     displayAddresses[i] = lastAddress[1];
 
                 }
-
-
                 System.out.println(gson.toJsonTree(response.body()));
                 length = ids.length;
             }
@@ -160,7 +156,6 @@ public class StationList extends AppCompatActivity {
                 message = rootObject.get("data").getAsString();
 
                 accessData(message,i);
-
 
             }
             @Override
@@ -201,7 +196,12 @@ public class StationList extends AppCompatActivity {
 
             stationName.setText(stationNames[i]);
             vehicleCount.setText(vehicleLength[i]);
-            stationAvailability.setText(fuelAvailability[i]);
+            if(fuelAvailability[i].equals("Available")){
+                stationAvailability.setText(fuelAvailability[i]);
+            }else{
+                stationAvailability.setText("Unavailable");
+            }
+
             address.setText(displayAddresses[i]);
 
             if(stationAvailability.getText().toString().equals("Available")){

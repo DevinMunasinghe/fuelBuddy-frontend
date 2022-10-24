@@ -8,6 +8,7 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -29,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -97,13 +99,14 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
         btnCompleteDatePicker.setOnClickListener(this);
         btnCompleteTimePicker.setOnClickListener(this);
 
+        id = getIntent().getStringExtra("stationId");
 
         //trigger update button
         updateDetailsBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
 
-                String stationId = "0001";
+                String stationId = id;
                 String fuelType = spinner.getSelectedItem().toString();
                 //creating update fuel object
                 String arrivalDateS = arrivalDate.getText().toString();
@@ -127,8 +130,6 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
             }
         });
 
-        id = getIntent().getStringExtra("stationId");
-
         //trigger get One station fuel stocks update data
         getData(id);
     }
@@ -149,7 +150,7 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
 
             @Override
             public void onFailure(Call<FuelList> call, Throwable t) {
-                Log.e("Error", t.getMessage());
+                Toasty.info(getApplicationContext(), "Network Error Unable to load data!", Toast.LENGTH_LONG, true).show();
             }
         });
     }
@@ -292,6 +293,9 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
     //update the fuel stock data with web API
     public void updateStock(String id, String fuelType, Fuel fuel){
 
+        Toasty.Config.reset();
+        Toasty.Config.getInstance().setGravity(Gravity.CENTER_VERTICAL|Gravity.START,240, -630).apply();
+
         Call<Object> call = RetrofitClient.getInstance().getMyApi().updateFuelStock(id,fuelType,fuel);
         call.enqueue(new Callback<Object>() {
             @Override
@@ -299,13 +303,13 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
                 if(response.isSuccessful()){
                     Gson gson = new Gson();
                     System.out.println(gson.toJsonTree(response.body()));
-                    Toast.makeText(getApplicationContext(),"Fuel stock successfully updated!",Toast.LENGTH_SHORT);
+                    Toasty.success(getApplicationContext(), "Owner Details Registered Successfully!", Toast.LENGTH_LONG, true).show();
                 }
             }
 
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
-                Log.e("Error", t.getMessage());
+                Toasty.error(getApplicationContext(), "Internal Error Occurred", Toast.LENGTH_LONG, true).show();
             }
         });
     }
@@ -381,6 +385,4 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
             timePickerDialog.show();
         }
     }
-
-
 }

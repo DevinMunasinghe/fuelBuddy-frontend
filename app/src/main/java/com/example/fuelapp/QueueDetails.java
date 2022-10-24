@@ -223,9 +223,18 @@ public class QueueDetails extends AppCompatActivity {
                 JsonParser parser = new JsonParser();
                 JsonElement element = gson.toJsonTree(response.body());
                 JsonObject rootObject = element.getAsJsonObject();
-                String message = rootObject.get("data").getAsString();
+                System.out.println("ROOT"+rootObject+ element);
+//                if(rootObject.equals("{}")){
+//                    System.out.println("HELLOOOO");
+//                    String message = "0";
+//                    waitingTime.setText(message);
+//                }else{
+//                    String message = rootObject.get("data").getAsString();
+//                    waitingTime.setText(message.substring(0,message.length()-4));
+//                }
 
-                waitingTime.setText(message.substring(0,message.length()-4));
+
+
 
             }
 

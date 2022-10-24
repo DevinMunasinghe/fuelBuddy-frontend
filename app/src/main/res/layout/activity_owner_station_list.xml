@@ -55,7 +55,7 @@
         />
     <TextView
         android:id="@+id/profileOwnerphoneLabel"
-        android:layout_width="80dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="Contact : "
         android:layout_below="@id/profileOwnerNameLabel"
@@ -74,7 +74,7 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_marginTop="2dp"
-        android:layout_marginLeft="110dp"
+        android:layout_marginLeft="120dp"
         android:textColor="@color/navy_clue"
         />
     <TextView
@@ -87,6 +87,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="30dp"
         android:textColor="@color/navy_clue"
+        android:textStyle="italic"
         />
 
     <ListView

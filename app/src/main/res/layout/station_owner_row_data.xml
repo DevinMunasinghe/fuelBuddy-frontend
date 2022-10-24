@@ -28,23 +28,8 @@
                 android:text="item title"
                 android:textSize="20dp"
                 android:textStyle="bold"
-                android:drawableLeft="@drawable/ic_baseline_arrow_circle_right_24"
+                android:drawableLeft="@drawable/ic_baseline_location_city_24"
                 android:drawablePadding="8dp"
-                >
-
-            </TextView>
-            <TextView
-                android:id="@+id/addressValueProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="50dp"
-                android:ellipsize="end"
-                android:lines="1"
-                android:text="item title"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:layout_below="@id/stationNameProfile"
-
                 >
 
             </TextView>
