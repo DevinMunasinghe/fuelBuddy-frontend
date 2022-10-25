@@ -34,7 +34,16 @@ import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
+/**
+ * Data displaying of all the stations available
+ *
+ * @author Hasani Kariyawasam
+ *
+ * @method updateStock(String id, String fuelType, Fuel fuel)
+ * @method accessArrayList(List<Fuel> list)
+ * @method getData(String id)
+ *
+ */
 public class updateOwner extends AppCompatActivity implements AdapterView.OnItemSelectedListener,View.OnClickListener {
 
     //variables

@@ -3,6 +3,19 @@ package com.example.fuelapp.APIManager;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * User data management data model
+ *
+ * @author Hasani Kariyawasam
+ *
+ * @variables name,phone,email,password,type, vehicleType,vehicleId, station
+ *
+ * @constructor User(String name, String phone, String email, String password, String type, String vehicleType, String vehicleId) to manage the details of drivers
+ * @constructor User(String name, String phone, String email, String password, String type, Station[] station) to manage the details of station owners
+ *
+ * and @getters and @setters for the variables managed
+ */
+
 public class User {
 
     @SerializedName("name")

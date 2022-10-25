@@ -30,6 +30,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Data displaying of all the stations available
+ *
+ * @author Hasani Kariyawasam
+ *
+ * @method getStations
+ * @method getStationQueueCount(String stationId, int i)
+ * @method getStations
+ *
+ */
 public class StationList extends AppCompatActivity {
 
     //variables

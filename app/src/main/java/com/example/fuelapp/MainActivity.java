@@ -29,6 +29,15 @@ import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+/**
+ * Management user login
+ *
+ * @author Hasani Kariyawasam
+ *
+ * @method loginUser(LoginResult Result) , @param result
+ * @method emptyFilledData(),
+ *
+ */
 
 public class MainActivity extends AppCompatActivity {
 

@@ -2,6 +2,18 @@ package com.example.fuelapp.APIManager;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Queue data management data model
+ *
+ * @author Hasani Kariyawasam
+ *
+ * @variables stationId,vehicleId,vehicleType,joined,exit,status
+ *
+ * @constructor Queue(String stationId, String vehicleId, String vehicleType, String joined, String status) to be used during joining to a queue
+ * @constructor Queue(String joined, String exit, String status) to be used during update details of a queue
+ *
+ * and @getters and @setters for the variables managed
+ */
 public class Queue {
 
     @SerializedName("stationId")

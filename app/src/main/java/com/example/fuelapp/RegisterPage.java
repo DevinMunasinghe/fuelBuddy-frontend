@@ -7,6 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+/**
+ * Display the button to navigate to separate register pages for driver and station owner
+ *
+ * @author Hasani Kariyawasam
+
+ *
+ */
 
 public class RegisterPage extends AppCompatActivity {
 

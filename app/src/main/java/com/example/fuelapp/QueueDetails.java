@@ -28,6 +28,22 @@ import java.util.Locale;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+/**
+ * Data displaying of a queue of a specific station
+ *
+ * @author Hasani Kariyawasam
+ *
+ * @method getQueueLengthsByVehicleType(vehicleType, id)
+ * @method getQueueLength(String stationId)
+ * @method joinToQueue(Queue queue)
+ * @method checkJoinedVehicle(String vehicleId)
+ * @method exitQueueBeforePump(String stationId,String vehicleId, Queue queue)
+ * @method exitQueueBeforePump(String stationId,String vehicleId, Queue queue)
+ * @method exitQueueAfterPump(String stationId,String vehicleId, Queue queue)
+ *
+ *
+ */
+
 
 public class QueueDetails extends AppCompatActivity {
 

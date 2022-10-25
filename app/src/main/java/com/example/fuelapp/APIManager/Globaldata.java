@@ -1,5 +1,17 @@
 package com.example.fuelapp.APIManager;
 
+/**
+ * Creating a singleton global instance for the accessing data after user login
+ *
+ *
+ * @author Hasani Kariyawasam
+ *
+ * @variables notification_indexOne, notification_indexTwo, notification_indexThree,Notification_indexFour
+ *
+ * @constructor Globaldata() and @getters and @setters for the variables managed
+ */
+
+
 public class Globaldata {
 
     private static Globaldata instance = new Globaldata();
