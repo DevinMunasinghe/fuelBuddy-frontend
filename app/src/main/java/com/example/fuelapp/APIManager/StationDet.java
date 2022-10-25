@@ -1,7 +1,17 @@
 package com.example.fuelapp.APIManager;
 
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+/**
+ * Station data management data model
+ *
+ * @author Hasani Kariyawasam
+ *
+ * @variables name,id,address, phone,email, fuel,
+ *
+ * @constructor StationDet(String id, String name, String address, String phone, String email, Fuel[] fuel)
+ *
+ * and @getters and @setters for the variables managed
+ */
 
 public class StationDet {
 

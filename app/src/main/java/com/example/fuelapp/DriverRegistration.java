@@ -25,6 +25,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * Management of the driver details registration
+ *
+ * @author Hasani Kariyawasam
+ *
+ * @method registerDriver() , emptyFilledData(), registerVehicleDriver()
+ *
+ */
+
 
 public class DriverRegistration extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 

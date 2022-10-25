@@ -3,6 +3,21 @@ package com.example.fuelapp.APIManager;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Fuel data management data model
+ *
+ *
+ * @author Hasani Kariyawasam
+ *
+ * @variables type, arrival, complete,status
+ *
+ * @constructor Fuel(String type, String arrival, String complete, String status) to be used in fuel object creation
+ * @constructor Fuel(String arrival, String complete, String status) to be used for fuel updates
+ *
+ * and @getters and @setters for the variables managed
+ */
+
+
 public class Fuel {
 
     @SerializedName("type")

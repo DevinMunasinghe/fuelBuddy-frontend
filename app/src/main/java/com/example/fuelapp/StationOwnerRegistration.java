@@ -24,6 +24,14 @@ import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+/**
+ * Management of the station owner details registration along with stations registration
+ *
+ * @author Hasani Kariyawasam
+ *
+ * @method registerOwner() , emptyFilledData(), registerStationOwner(user, stationDetails)
+ *
+ */
 
 public class StationOwnerRegistration extends AppCompatActivity {
 

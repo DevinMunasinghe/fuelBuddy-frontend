@@ -20,6 +20,14 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+/**
+ * Data displaying of a particular selected Station
+ *
+ * @author Hasani Kariyawasam
+ *
+ * @method getFuelData(String stationId)
+ * @returns fuel stock data
+ */
 
 public class StationData extends AppCompatActivity {
 

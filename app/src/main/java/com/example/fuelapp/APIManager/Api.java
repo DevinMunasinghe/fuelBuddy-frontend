@@ -7,6 +7,17 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
+
+/**
+ * API calls to the backend implemented
+ * <p>BASE URL =http://10.0.2.2:6000/api/v1/
+ *
+ * @author Hasani Kariyawasam
+ *
+ * @params String stationId, String vehicle Id
+ *
+ */
+
 public interface Api {
     String BASE_URL = "http://10.0.2.2:6000/api/v1/";
 

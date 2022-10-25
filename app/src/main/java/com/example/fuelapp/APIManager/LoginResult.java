@@ -2,6 +2,18 @@ package com.example.fuelapp.APIManager;
 
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * LoginResults data management data model
+ *
+ * @author Hasani Kariyawasam
+ *
+ * @variables email,password
+ *
+ * @constructor LoginResult(String email, String password)
+ *
+ * and @getters and @setters for the variables managed
+ */
+
 public class LoginResult {
 
     @SerializedName("email")

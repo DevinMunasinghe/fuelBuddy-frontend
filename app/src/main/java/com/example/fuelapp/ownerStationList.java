@@ -24,6 +24,15 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+/**
+ * Data displaying of all the stations available for a particular station owner
+ *
+ * @author Hasani Kariyawasam
+ *
+ * @method getOwnersStations(email) @param email
+ * @returns the list of stations
+ *
+ */
 
 public class ownerStationList extends AppCompatActivity {
 
