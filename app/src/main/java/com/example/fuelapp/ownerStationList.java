@@ -26,6 +26,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ownerStationList extends AppCompatActivity {
+
+    //variables
     ListView stationOwnerListView;
 
     int length;
@@ -39,14 +41,27 @@ public class ownerStationList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getOwnersStations();
+
+        //intent data retrieval
+        Intent i = getIntent();
+        String name = i.getStringExtra("name");
+        String phone = i.getStringExtra("phone");
+        String email = i.getStringExtra("email");
+
+        //triggering retrieval of particular owners stations list
+        getOwnersStations(email);
+
+        //list view management
         setContentView(R.layout.activity_owner_station_list);
         stationOwnerListView = findViewById(R.id.stationOwnerListView);
         CustomAdapter customAdapter = new CustomAdapter();
-
-
-
         stationOwnerListView.setAdapter(customAdapter);
+
+        //id identification
+        profileName =(TextView) findViewById(R.id.profileOwnerNameValue);
+        phoneNo = (TextView) findViewById(R.id.profileOwnerPhoneValue);
+
+        //single block click trigger
         stationOwnerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
@@ -57,24 +72,15 @@ public class ownerStationList extends AppCompatActivity {
             }
         });
 
-
-        Intent i = getIntent();
-        String name = i.getStringExtra("name");
-        String phone = i.getStringExtra("phone");
-        String email = i.getStringExtra("email");
-
-        profileName = findViewById(R.id.profileOwnerNameValue);
-        phoneNo = findViewById(R.id.profileOwnerPhoneValue);
-
+        //intent data setting
         profileName.setText(name);
         phoneNo.setText(phone);
-
-
     }
 
-    public  void getOwnersStations(){
+    //retrieve all stations for an owner with web API
+    public  void getOwnersStations(String email){
 
-        Call<StatList> call = RetrofitClient.getInstance().getMyApi().viewStationsOfOwner("ransith@gmail.com");
+        Call<StatList> call = RetrofitClient.getInstance().getMyApi().viewStationsOfOwner(email);
 
         call.enqueue(new Callback<StatList>() {
             @Override
@@ -91,14 +97,8 @@ public class ownerStationList extends AppCompatActivity {
                         ids[i] = list.get(i).getId();
                         stationNames[i]=list.get(i).getName();
                     }
-
-
-                    System.out.println(gson.toJsonTree(response.body()));
-                    System.out.println(gson.toJsonTree(list.get(0).getId()));
-
                     length = ids.length;
                 }
-
 
             }
 
@@ -135,7 +135,6 @@ public class ownerStationList extends AppCompatActivity {
 
             stationName.setText(stationNames[i]);
             stationID.setText(ids[i]);
-
 
             return  view;
         }

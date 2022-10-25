@@ -10,9 +10,9 @@ import android.widget.TextView;
 
 public class RegisterPage extends AppCompatActivity {
 
+    //variables
     Button driverButton;
     Button ownerButton;
-
     TextView loginLink;
 
     @Override
@@ -20,10 +20,12 @@ public class RegisterPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_page);
 
+        //id identification
         driverButton = findViewById(R.id.driverBtn);
         ownerButton = findViewById(R.id.stationOwnerBtn);
         loginLink = findViewById(R.id.loginPageLink);
 
+        //triggering the driver registering button
         driverButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -33,6 +35,7 @@ public class RegisterPage extends AppCompatActivity {
             }
         });
 
+        //triggering the station owner registering button
         ownerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -42,6 +45,7 @@ public class RegisterPage extends AppCompatActivity {
             }
         });
 
+        //triggering the button to link login
         loginLink.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {

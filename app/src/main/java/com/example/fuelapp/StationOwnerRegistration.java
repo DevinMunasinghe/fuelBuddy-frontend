@@ -32,11 +32,13 @@ public class StationOwnerRegistration extends AppCompatActivity {
     Button registerButton;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_station_owner_registration);
 
+        //id identification
         name = findViewById(R.id.ownerNameInput);
         phone = findViewById(R.id.ownerPhoneNumber);
         email = findViewById(R.id.ownerEmail);
@@ -47,25 +49,20 @@ public class StationOwnerRegistration extends AppCompatActivity {
 
         registerButton = findViewById(R.id.ownerRegBtn);
 
+        //trigger register button
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-//                registerOwner(v);
-                Toasty.Config.reset();
-                Toasty.Config.getInstance().setGravity(200,0, 800).apply();
-                //error Toast
-                Toasty.error(getApplicationContext(), "Internal Error Occured", Toast.LENGTH_LONG, true).show();
-                //Success Toast
-                Toasty.success(getApplicationContext(), "Owner Details Registered Successfully!", Toast.LENGTH_LONG, true).show();
-                //Warning Toast
-                Toasty.warning(getApplicationContext(), "Owner Details Registered Successfully!", Toast.LENGTH_LONG, true).show();
-                //Info Toast
-                Toasty.info(getApplicationContext(), "Owner Details Registered Successfully!", Toast.LENGTH_LONG, true).show();
+                registerOwner(v);
             }
         });
     }
 
     public void registerOwner(View view){
+        //toast creation
+        Toasty.Config.reset();
+        Toasty.Config.getInstance().setGravity(Gravity.CENTER_VERTICAL|Gravity.START,240, -620).apply();
+
         try{
             if(TextUtils.isEmpty(name.getText().toString())){
                 name.requestFocus();
@@ -92,9 +89,6 @@ public class StationOwnerRegistration extends AppCompatActivity {
             else{
 
                 //connection to backend for registration of a station Owner
-                //register owner as a user + register the station as well
-                //set the userType as "Owner"
-
                 //creating station owner object
                 String type = "owner";
 
@@ -140,7 +134,7 @@ public class StationOwnerRegistration extends AppCompatActivity {
             }
 
         }catch(Exception e){
-            Toast.makeText(getApplicationContext(),"Internal Error occured refresh",Toast.LENGTH_SHORT).show();
+            Toasty.warning(getApplicationContext(), "Cannot proceed please recheck details", Toast.LENGTH_LONG, true).show();
         }
     }
 
@@ -156,7 +150,10 @@ public class StationOwnerRegistration extends AppCompatActivity {
 
     public void registerStationOwner(User user, StationDet stationDet){
 
-        System.out.println(user);
+        //toast creation
+        Toasty.Config.reset();
+        Toasty.Config.getInstance().setGravity(Gravity.CENTER_VERTICAL|Gravity.START,240, -620).apply();
+
         Call<User> call = RetrofitClient.getInstance().getMyApi().createUser(user);
 
         call.enqueue(new Callback<User>() {
@@ -164,20 +161,22 @@ public class StationOwnerRegistration extends AppCompatActivity {
             public void onResponse(Call<User>  call, Response<User> response) {
                 if(response.isSuccessful()){
                     registerAStation(stationDet);
-//                    Toast.makeText(getApplicationContext(),"Owner Details Registered Successfully",Toast.LENGTH_SHORT).show();
                     Toasty.success(getApplicationContext(), "Owner Details Registered Successfully!", Toast.LENGTH_LONG, true).show();
                 }
             }
 
             @Override
             public void onFailure(Call<User>   call, Throwable t) {
-//                Toast.makeText(getApplicationContext(),"Internal Error Occured",Toast.LENGTH_SHORT).show();
-                Toasty.error(getApplicationContext(), "Internal Error Occured", Toast.LENGTH_LONG, true).show();
+                Toasty.error(getApplicationContext(), "Internal Error Occurred", Toast.LENGTH_LONG, true).show();
             }
         });
     }
 
     public void registerAStation(StationDet stationDet){
+
+        //toast creation
+        Toasty.Config.reset();
+        Toasty.Config.getInstance().setGravity(Gravity.CENTER_VERTICAL|Gravity.START,240, -620).apply();
 
         Call<StationDet> call = RetrofitClient.getInstance().getMyApi().createStation(stationDet);
 
@@ -185,15 +184,14 @@ public class StationOwnerRegistration extends AppCompatActivity {
             @Override
             public void onResponse(Call<StationDet>  call, Response<StationDet> response) {
                 if(response.isSuccessful()){
-//                    Toast.makeText(getApplicationContext(),"Station Created Successfully",Toast.LENGTH_SHORT).show();
                     Toasty.success(getApplicationContext(), "Station Created Successfully!", Toast.LENGTH_LONG, true).show();
                 }
             }
 
             @Override
             public void onFailure(Call<StationDet>   call, Throwable t) {
-//                Toast.makeText(getApplicationContext(),"Internal Error Occured",Toast.LENGTH_SHORT).show();
-                Toasty.error(getApplicationContext(), "Internal Error Occured", Toast.LENGTH_LONG, true).show();
+                Toasty.error(getApplicationContext(), "Internal Error Occurred", Toast.LENGTH_LONG, true).show();
+
             }
         });
     }

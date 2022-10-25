@@ -32,6 +32,7 @@ import retrofit2.Response;
 
 public class StationList extends AppCompatActivity {
 
+    //variables
     ListView stationListView;
 
     String[] ids;
@@ -55,9 +56,10 @@ public class StationList extends AppCompatActivity {
         getStations();
         setContentView(R.layout.activity_station_list);
 
-        Intent i = new Intent();
+        Intent i = getIntent();
         String vehicleId = i.getStringExtra("vehicleId");
 
+        //id identification
         stationListView = findViewById(R.id.stationListView);
         CustomAdapter customAdapter = new CustomAdapter();
 
@@ -73,13 +75,9 @@ public class StationList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
-
     }
 
+    //view all the available stations with web API
     public  void getStations(){
 
         Call<StationLists> call = RetrofitClient.getInstance().getMyApi().viewStations();
@@ -124,8 +122,6 @@ public class StationList extends AppCompatActivity {
                         fuelStatus[j] = fuels[j].getStatus();
                         if(fuels[j].getStatus().equals("available") || fuels[j].getStatus().equals("Available")){
                             fuelAvailability[i] = "Available";
-                        }else {
-                            fuelAvailability[i] = "Unavailable";
                         }
 
                     }
@@ -134,8 +130,6 @@ public class StationList extends AppCompatActivity {
                     displayAddresses[i] = lastAddress[1];
 
                 }
-
-
                 System.out.println(gson.toJsonTree(response.body()));
                 length = ids.length;
             }
@@ -148,6 +142,7 @@ public class StationList extends AppCompatActivity {
 
     }
 
+    //get the stationQueue count with web API
     public void getStationQueueCount(String stationId, int i){
         Call<Object> call = RetrofitClient.getInstance().getMyApi().getQueueVehicleCount(stationId);
 
@@ -162,7 +157,6 @@ public class StationList extends AppCompatActivity {
 
                 accessData(message,i);
 
-
             }
             @Override
             public void onFailure(Call<Object>   call, Throwable t) {
@@ -176,6 +170,7 @@ public class StationList extends AppCompatActivity {
         vehicleLength[id] = vehicleId.substring(0,vehicleId.length()-2);
     }
 
+    //manage data with custom adapter
     private class CustomAdapter extends BaseAdapter {
         @Override
         public int getCount() {
@@ -201,7 +196,12 @@ public class StationList extends AppCompatActivity {
 
             stationName.setText(stationNames[i]);
             vehicleCount.setText(vehicleLength[i]);
-            stationAvailability.setText(fuelAvailability[i]);
+            if(fuelAvailability[i].equals("Available")){
+                stationAvailability.setText(fuelAvailability[i]);
+            }else{
+                stationAvailability.setText("Unavailable");
+            }
+
             address.setText(displayAddresses[i]);
 
             if(stationAvailability.getText().toString().equals("Available")){

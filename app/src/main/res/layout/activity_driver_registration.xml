@@ -53,20 +53,20 @@
 
         />
 
-    <EditText
-        android:id="@+id/editTextTextPersonName2"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/custom_edittext"
-        android:drawableLeft="@drawable/ic_baseline_local_phone_24"
-        android:drawablePadding="8dp"
-        android:ems="10"
-        android:hint="@string/phone"
-        android:inputType="textPersonName"
-        android:padding="8dp"
-        android:textSize="14sp"
-         />
+            <EditText
+                android:id="@+id/editTextTextPersonName2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext"
+                android:drawableLeft="@drawable/ic_baseline_local_phone_24"
+                android:drawablePadding="8dp"
+                android:ems="10"
+                android:hint="@string/phone"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:padding="8dp"
+                android:textSize="14sp" />
 
     <EditText
         android:id="@+id/driverEmailInput"
@@ -83,34 +83,20 @@
         />
 
             <EditText
-            android:id="@+id/passwordInput"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/custom_edittext"
-            android:drawableLeft="@drawable/ic_baseline_lock_24"
-            android:drawablePadding="8dp"
-            android:hint="@string/loginPassword"
-            android:inputType="textPassword"
-            android:padding="8dp"
-            android:textSize="14sp"
-            />
-
-            <EditText
-                android:id="@+id/vehicleID"
+                android:id="@+id/passwordInput"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/custom_edittext"
-                android:drawableLeft="@drawable/ic_baseline_10k_24"
+                android:drawableLeft="@drawable/ic_baseline_lock_24"
                 android:drawablePadding="8dp"
-                android:hint="@string/vehicleId"
+                android:hint="@string/loginPassword"
                 android:inputType="textPassword"
+                android:maxLength="8"
                 android:padding="8dp"
-                android:textSize="14sp"
-                />
+                android:textSize="14sp" />
 
-<!--            <EditText-->
+            <!--            <EditText-->
 <!--                android:id="@+id/vehicleType"-->
 <!--                android:layout_width="match_parent"-->
 <!--                android:layout_height="50dp"-->
@@ -123,6 +109,20 @@
 <!--                android:padding="8dp"-->
 <!--                android:textSize="14sp"-->
 <!--                />-->
+            <EditText
+                android:id="@+id/vehicleID"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/custom_edittext"
+                android:drawableLeft="@drawable/ic_baseline_10k_24"
+                android:drawablePadding="8dp"
+                android:hint="@string/vehicleId"
+                android:inputType="textPersonName"
+                android:maxLength="8"
+                android:padding="8dp"
+                android:textSize="14sp" />
+
             <Spinner
                 android:id="@+id/vehicle_type_spinner"
                 android:layout_width="match_parent"
