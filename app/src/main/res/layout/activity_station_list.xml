@@ -8,6 +8,18 @@
     tools:context=".StationList"
 
     >
+    <Button
+        android:id="@+id/logoutbtn1"
+        android:layout_width="40dp"
+        android:layout_height="51dp"
+        android:layout_marginLeft="330dp"
+        android:padding="10dp"
+        android:layout_alignBottom="@+id/in_date"
+        android:layout_toRightOf="@+id/arrivalUpdateTimeInput"
+        android:drawableLeft="@drawable/ic_baseline_logout_24"
+        android:backgroundTint="@color/navy_clue"
+        app:cornerRadius = "20dp"
+        />
 
     <LinearLayout
         android:id="@+id/linearviewimage"

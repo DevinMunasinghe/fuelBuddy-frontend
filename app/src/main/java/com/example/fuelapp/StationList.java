@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -34,6 +35,8 @@ public class StationList extends AppCompatActivity {
 
     //variables
     ListView stationListView;
+    Button  logoutBtn;
+
 
     String[] ids;
     String[] vehicleLength;
@@ -56,6 +59,8 @@ public class StationList extends AppCompatActivity {
         getStations();
         setContentView(R.layout.activity_station_list);
 
+        logoutBtn=findViewById(R.id.logoutbtn1);
+
         Intent i = getIntent();
         String vehicleId = i.getStringExtra("vehicleId");
 
@@ -73,6 +78,16 @@ public class StationList extends AppCompatActivity {
                 intent.putExtra("vehicleCount",vehicleLength[i]);
                 intent.putExtra("stationId",ids[i]);
                 startActivity(intent);
+            }
+        });
+
+        //trigger button click logout button
+        logoutBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(StationList.this,MainActivity.class);
+                startActivity(intent);
+
             }
         });
     }

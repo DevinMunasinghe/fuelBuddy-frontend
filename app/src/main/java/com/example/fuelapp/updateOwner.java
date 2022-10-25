@@ -39,7 +39,7 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
 
     //variables
     TextView arrivalTime,  endUpTime,arrivalDate , EndUpDate ;
-    Button updateDetailsBtn;
+    Button updateDetailsBtn, logoutBtn;
     Spinner spinner, availability_spinner;
     String id;
 
@@ -69,6 +69,7 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
         spinner= (Spinner) findViewById(R.id.fuel_types);
         availability_spinner= (Spinner) findViewById(R.id.availability_types);
         updateDetailsBtn = findViewById(R.id.updateStationBtn);
+        logoutBtn=findViewById(R.id.logoutbtn);
 
        //date picker variables
         btnArrivalDatePicker=(Button)findViewById(R.id.btn_arrival_date);
@@ -100,6 +101,16 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
         btnCompleteTimePicker.setOnClickListener(this);
 
         id = getIntent().getStringExtra("stationId");
+
+        //trigger button click logout button
+        logoutBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(updateOwner.this,MainActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
         //trigger update button
         updateDetailsBtn.setOnClickListener(new View.OnClickListener(){

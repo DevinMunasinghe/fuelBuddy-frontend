@@ -8,7 +8,19 @@
     android:gravity="center"
     android:background="@drawable/ownernew"
     tools:context=".updateOwner">
-
+    <Button
+        android:id="@+id/logoutbtn"
+        android:layout_width="40dp"
+        android:layout_height="51dp"
+        android:layout_marginLeft="160dp"
+        android:padding="10dp"
+        android:layout_alignBottom="@+id/in_date"
+        android:layout_toRightOf="@+id/arrivalUpdateTimeInput"
+        android:drawableLeft="@drawable/ic_baseline_logout_24"
+        android:layout_toEndOf="@+id/in_date"
+        android:backgroundTint="@color/navy_clue"
+        app:cornerRadius = "20dp"
+        />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -19,6 +31,7 @@
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp"
         android:background="@drawable/custom_edittext">
+
 
         <ScrollView
             android:layout_width="match_parent"
@@ -88,7 +101,8 @@
                     android:layout_toEndOf="@+id/in_date"
                     android:layout_toRightOf="@+id/arrivalUpdateInput"
                     android:backgroundTint="@color/navy_clue"
-                    android:padding="12dp"
+                    android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
+                    android:padding="10dp"
                     android:text="ARRIVAL DATE"
                     app:cornerRadius="20dp" />
 
@@ -116,13 +130,14 @@
                     android:layout_width="140dp"
                     android:layout_height="51dp"
                     android:layout_alignBottom="@+id/in_date"
-
+                    android:drawableLeft="@drawable/ic_baseline_access_time_24"
                     android:layout_marginLeft="-23dp"
                     android:layout_marginTop="18dp"
                     android:layout_toEndOf="@+id/in_date"
                     android:layout_toRightOf="@+id/arrivalUpdateTimeInput"
+
                     android:backgroundTint="@color/navy_clue"
-                    android:padding="12dp"
+                    android:padding="10dp"
                     android:text="ARRIVAL TIME"
                     app:cornerRadius="20dp" />
 
@@ -153,9 +168,10 @@
                     android:id="@+id/btn_endup_date"
                     android:layout_marginTop="18dp"
                     android:layout_marginLeft="-23dp"
-                    android:padding="12dp"
+                    android:padding="10dp"
                     android:layout_alignBottom="@+id/in_date"
                     android:layout_toRightOf="@+id/arrivalUpdateInput"
+                    android:drawableLeft="@drawable/ic_baseline_calendar_month_24"
                     android:layout_toEndOf="@+id/in_date"
                     android:backgroundTint="@color/navy_clue"
                     app:cornerRadius = "20dp"
@@ -189,9 +205,10 @@
                     android:text="END TIME"
                     android:layout_marginTop="18dp"
                     android:layout_marginLeft="-23dp"
-                    android:padding="12dp"
+                    android:padding="10dp"
                     android:layout_alignBottom="@+id/in_date"
                     android:layout_toRightOf="@+id/arrivalUpdateTimeInput"
+                    android:drawableLeft="@drawable/ic_baseline_access_time_24"
                     android:layout_toEndOf="@+id/in_date"
                     android:backgroundTint="@color/navy_clue"
                     app:cornerRadius = "20dp"
