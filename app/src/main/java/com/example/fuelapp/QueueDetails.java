@@ -50,6 +50,7 @@ public class QueueDetails extends AppCompatActivity {
     //variables
     TextView totalVehicleCount,totalCarCount, totalBusCount, totalThreeWheelCount , totalBikeCount,waitingTime,vehicleToPump;
     Button joinToQueueBtn , exitBeforePumpBtn , exitAfterPumpBtn;
+    Button logoutBtn;
 
     String vehicleCount = "0";
     String vehicleJoined = "Haven't joined to a queue yet";
@@ -83,6 +84,7 @@ public class QueueDetails extends AppCompatActivity {
         joinToQueueBtn = findViewById(R.id.joiToQueueBtn);
         exitBeforePumpBtn = findViewById(R.id.exitBeforePumpBtn);
         exitAfterPumpBtn = findViewById(R.id.exitAfterPumpBtn);
+        logoutBtn=findViewById(R.id.logoutbtn3);
 
         //triggering the methods to retrieve vehicle count by type
         getQueueLengthsByVehicleType(stationId,"Car");
@@ -97,6 +99,17 @@ public class QueueDetails extends AppCompatActivity {
         getQueueWaitTime(stationId);
 
         String current = date + " " + currentTime;
+
+
+        //trigger button click logout button
+        logoutBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(QueueDetails.this,MainActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
 
         //triggering the onclick for join to queue

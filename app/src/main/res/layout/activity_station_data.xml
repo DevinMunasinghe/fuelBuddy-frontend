@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".StationData">
     <Button
-        android:id="@+id/logoutbtn"
+        android:id="@+id/logoutbtn4"
         android:layout_width="40dp"
         android:layout_height="51dp"
         android:layout_marginLeft="330dp"

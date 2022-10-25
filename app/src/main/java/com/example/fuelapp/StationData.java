@@ -34,7 +34,7 @@ public class StationData extends AppCompatActivity {
     //variables
     TextView stationName, stationAvailability, fuelType1 , fuelType2, fuelType3, fuelType4, arrivalTimeVal1,arrivalTimeVal2,arrivalTimeVal3,arrivalTimeVal4,finishTime1, finishTime2, finishTime3, finishTime4;
     TextView availability1,availability2,availability3,availability4;
-    Button queueBtn;
+    Button queueBtn,logoutBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +70,18 @@ public class StationData extends AppCompatActivity {
 
         //triggering to retrieve fuel data of a specific station
         getFuelData(stationId);
+
+        logoutBtn=findViewById(R.id.logoutbtn4);
+
+        //trigger button click logout button
+        logoutBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(StationData.this,MainActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
         //triggering the onclick for queue button
         queueBtn.setOnClickListener(new View.OnClickListener(){

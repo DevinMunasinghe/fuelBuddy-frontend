@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -45,6 +46,7 @@ public class ownerStationList extends AppCompatActivity {
     String[] ids ;
 
     TextView profileName,phoneNo;
+    Button logoutBtn;
 
 
     @Override
@@ -69,6 +71,17 @@ public class ownerStationList extends AppCompatActivity {
         //id identification
         profileName =(TextView) findViewById(R.id.profileOwnerNameValue);
         phoneNo = (TextView) findViewById(R.id.profileOwnerPhoneValue);
+        logoutBtn=findViewById(R.id.logoutbtn2);
+
+        //trigger button click logout button
+        logoutBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(ownerStationList.this,MainActivity.class);
+                startActivity(intent);
+
+            }
+        });
 
         //single block click trigger
         stationOwnerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
