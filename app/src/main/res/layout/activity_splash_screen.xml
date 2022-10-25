@@ -4,6 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashScreen">
+    tools:context=".SplashScreen"
+    >
 
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageview"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="400"-->
+<!--        android:background="@drawable/waveimg"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.498">-->
+
+<!--    </ImageView>-->
+
+    <TextView
+        android:id="@+id/flashlabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/stationOwnerRegistration"
+        android:textAlignment="center"
+        android:textColor="@color/navy_clue"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
