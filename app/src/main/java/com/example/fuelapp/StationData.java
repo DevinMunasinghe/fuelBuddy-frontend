@@ -35,6 +35,7 @@ public class StationData extends AppCompatActivity {
     TextView stationName, stationAvailability, fuelType1 , fuelType2, fuelType3, fuelType4, arrivalTimeVal1,arrivalTimeVal2,arrivalTimeVal3,arrivalTimeVal4,finishTime1, finishTime2, finishTime3, finishTime4;
     TextView availability1,availability2,availability3,availability4;
     Button queueBtn,logoutBtn;
+    String name, phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,8 @@ public class StationData extends AppCompatActivity {
         queueBtn = findViewById(R.id.queueBTN);
         Intent intent = getIntent();
 
+        name =intent.getStringExtra("stationName");
+        phone=intent.getStringExtra("stationAvailability");
         stationName.setText(intent.getStringExtra("stationName"));
         stationAvailability.setText(intent.getStringExtra("stationAvailability"));
         String stationId = intent.getStringExtra("stationId");
@@ -89,6 +92,8 @@ public class StationData extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent=new Intent(StationData.this,QueueDetails.class);
                 intent.putExtra("stationId",stationId);
+                intent.putExtra("stationName",name);
+                intent.putExtra("stationAvailability",phone);
                 startActivity(intent);
 
             }

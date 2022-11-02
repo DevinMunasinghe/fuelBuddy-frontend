@@ -51,6 +51,7 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(UsersMaster.Users.COLUMN_NAME_USER_TOKEN,token);
 
         long result = db.insert(UsersMaster.Users.TABLE_NAME,null,values);
+        db.close();
         return result;
     }
 

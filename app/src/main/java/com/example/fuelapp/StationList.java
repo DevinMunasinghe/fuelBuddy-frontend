@@ -2,14 +2,19 @@ package com.example.fuelapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.assist.AssistStructure;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -82,9 +87,8 @@ public class StationList extends AppCompatActivity {
         //id identification
         stationListView = findViewById(R.id.stationListView);
         searchOption = findViewById(R.id.FuelTypeUpdateInput);
-        CustomAdapter customAdapter = new CustomAdapter();
 
-        stationListView.setAdapter(customAdapter);
+
         stationListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
@@ -106,8 +110,8 @@ public class StationList extends AppCompatActivity {
 
             }
         });
-
     }
+
 
 
     //view all the available stations with web API
@@ -270,10 +274,10 @@ public class StationList extends AppCompatActivity {
 
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();
-        getStations();
         CustomAdapter customAdapter = new CustomAdapter();
 
         stationListView.setAdapter(customAdapter);
@@ -300,6 +304,7 @@ public class StationList extends AppCompatActivity {
                     CustomAdapter customAdapter = new CustomAdapter();
 
                     stationListView.setAdapter(customAdapter);
+                    customAdapter.notifyDataSetChanged();
                     stationListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
@@ -360,7 +365,7 @@ public class StationList extends AppCompatActivity {
             }else if(stationAvailability.getText().toString().equals("Unavailable")){
                 stationAvailability.setTextColor(Color.parseColor("#FF0000"));
             };
-            notifyDataSetChanged();
+//            notifyDataSetChanged();
             return  view1;
         }
     }

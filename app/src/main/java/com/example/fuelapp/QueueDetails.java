@@ -55,6 +55,7 @@ public class QueueDetails extends AppCompatActivity {
     String vehicleCount = "0";
     String vehicleJoined = "Haven't joined to a queue yet";
     String stationId,vehicleId,vehicleType,current;
+    String name, phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,8 @@ public class QueueDetails extends AppCompatActivity {
         //obtaining passed intent
         Intent intent =  getIntent();
         stationId = intent.getStringExtra("stationId");
+        name =intent.getStringExtra("stationName");
+        phone=intent.getStringExtra("stationAvailability");
 
         Globaldata sharedData = Globaldata.getInstance();
         vehicleId = sharedData.getNotification_indexOne();
@@ -145,7 +148,10 @@ public class QueueDetails extends AppCompatActivity {
                 //creating a queue object
                 Queue queue = new Queue(joined,exit,status);
                 exitQueueBeforePump(idStation,vehicle,queue);
-                Intent intent=new Intent(QueueDetails.this,StationList.class);
+                Intent intent=new Intent(QueueDetails.this,StationData.class);
+                intent.putExtra("stationId",stationId);
+                intent.putExtra("stationName",name);
+                intent.putExtra("stationAvailability",phone);
                 startActivity(intent);
             }
         });
@@ -163,7 +169,10 @@ public class QueueDetails extends AppCompatActivity {
                 //creating a queue object
                 Queue queue = new Queue(joined,exit,status);
                 exitQueueAfterPump(idStation,vehicle,queue);
-                Intent intent=new Intent(QueueDetails.this,StationList.class);
+                Intent intent=new Intent(QueueDetails.this,StationData.class);
+                intent.putExtra("stationId",stationId);
+                intent.putExtra("stationName",name);
+                intent.putExtra("stationAvailability",phone);
                 startActivity(intent);
             }
         });
@@ -325,7 +334,10 @@ public class QueueDetails extends AppCompatActivity {
 
                 if(vehicleJoined.equals("Haven't joined to a queue yet")){
                     joinToQueue(queue);
-                    Intent intent=new Intent(QueueDetails.this,StationList.class);
+                    Intent intent=new Intent(QueueDetails.this,StationData.class);
+                    intent.putExtra("stationId",stationId);
+                    intent.putExtra("stationName",name);
+                    intent.putExtra("stationAvailability",phone);
                     startActivity(intent);
                 }else if(vehicleJoined.charAt(0) == '0')
                 {
