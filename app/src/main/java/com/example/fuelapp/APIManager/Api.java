@@ -10,7 +10,7 @@ import retrofit2.http.Path;
 
 /**
  * API calls to the backend implemented
- * <p>BASE URL =http://10.0.2.2:6000/api/v1/
+ * <p>BASE URL =https://fuelbuddyapi.herokuapp.com/api/v1/
  *
  * @author Hasani Kariyawasam
  *
@@ -80,5 +80,11 @@ public interface Api {
     @retrofit2.http.Headers("Content-type: application/json")
     @GET("users/profiles/{email}")
     Call<Object> viewUserProfile(@Path("email") String email);
+
+    @retrofit2.http.Headers("Content-type: application/json")
+    @GET("stations/search/name/{name}")
+    Call<StationLists> searchStations(@Path("name") String name);
+
+
 
 }

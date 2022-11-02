@@ -54,6 +54,7 @@ public class QueueDetails extends AppCompatActivity {
 
     String vehicleCount = "0";
     String vehicleJoined = "Haven't joined to a queue yet";
+    String stationId,vehicleId,vehicleType,current;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,11 +63,11 @@ public class QueueDetails extends AppCompatActivity {
 
         //obtaining passed intent
         Intent intent =  getIntent();
-        String stationId = intent.getStringExtra("stationId");
+        stationId = intent.getStringExtra("stationId");
 
         Globaldata sharedData = Globaldata.getInstance();
-        String vehicleId = sharedData.getNotification_indexOne();
-        String vehicleType = sharedData.getNotification_indexTwo();
+        vehicleId = sharedData.getNotification_indexOne();
+        vehicleType = sharedData.getNotification_indexTwo();
 
         //setting the date
         String date = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
@@ -98,8 +99,7 @@ public class QueueDetails extends AppCompatActivity {
         //triggering the total wait time
         getQueueWaitTime(stationId);
 
-        String current = date + " " + currentTime;
-
+        current = date + " " + currentTime;
 
         //trigger button click logout button
         logoutBtn.setOnClickListener(new View.OnClickListener(){
@@ -125,13 +125,7 @@ public class QueueDetails extends AppCompatActivity {
                 //creating a queue object
                 Queue queue = new Queue(idStation,vehicle,vehicleT,joined,status);
                 checkJoinedVehicle(vehicle);
-
-                if(vehicleJoined.equals("Haven't joined to a queue yet")){
-                    joinToQueue(queue);
-                }else
-                {
-                    Toast.makeText(getApplicationContext(),"Vehicle is already in a queue "+ vehicleJoined,Toast.LENGTH_SHORT).show();
-                }
+                System.out.println("VEHICLE JOINED"+vehicleJoined);
 
 
 
@@ -151,7 +145,8 @@ public class QueueDetails extends AppCompatActivity {
                 //creating a queue object
                 Queue queue = new Queue(joined,exit,status);
                 exitQueueBeforePump(idStation,vehicle,queue);
-
+                Intent intent=new Intent(QueueDetails.this,StationList.class);
+                startActivity(intent);
             }
         });
 
@@ -168,6 +163,8 @@ public class QueueDetails extends AppCompatActivity {
                 //creating a queue object
                 Queue queue = new Queue(joined,exit,status);
                 exitQueueAfterPump(idStation,vehicle,queue);
+                Intent intent=new Intent(QueueDetails.this,StationList.class);
+                startActivity(intent);
             }
         });
 
@@ -291,7 +288,6 @@ public class QueueDetails extends AppCompatActivity {
 
                 System.out.println(message);
                 Toast.makeText(getApplicationContext(),"Joined To Queue",Toast.LENGTH_SHORT).show();
-
             }
 
             @Override
@@ -318,6 +314,27 @@ public class QueueDetails extends AppCompatActivity {
                 String message = rootObject.get("data").getAsString();
                 vehicleJoined = message;
 
+                String idStation = stationId;
+                String vehicle = vehicleId;
+                String vehicleT = vehicleType;
+                String joined = current;
+                String status = "Joined to the queue";
+
+                //creating a queue object
+                Queue queue = new Queue(idStation,vehicle,vehicleT,joined,status);
+
+                if(vehicleJoined.equals("Haven't joined to a queue yet")){
+                    joinToQueue(queue);
+                    Intent intent=new Intent(QueueDetails.this,StationList.class);
+                    startActivity(intent);
+                }else if(vehicleJoined.charAt(0) == '0')
+                {
+                    Toast.makeText(getApplicationContext(),"Vehicle is already in a queue "+ vehicleJoined,Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getApplicationContext(),"Vehicle is already in a queue "+ vehicleJoined,Toast.LENGTH_SHORT).show();
+                }
+
+                System.out.println("MESSAGE" +message );
             }
 
             @Override
@@ -385,4 +402,6 @@ public class QueueDetails extends AppCompatActivity {
         });
 
     }
+
+
 }

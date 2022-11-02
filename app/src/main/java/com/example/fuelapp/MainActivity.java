@@ -3,6 +3,7 @@ package com.example.fuelapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -18,6 +19,8 @@ import com.example.fuelapp.APIManager.LoginResult;
 import com.example.fuelapp.APIManager.RetrofitClient;
 import com.example.fuelapp.APIManager.StationDet;
 import com.example.fuelapp.APIManager.User;
+import com.example.fuelapp.SQLiteDatabase.DBHelper;
+import com.example.fuelapp.SQLiteDatabase.Users;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -93,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                         emptyFilledData();
                     }
                 }catch (Exception e){
+                    System.out.println(e.getMessage());
                    Toasty.warning(getApplicationContext(), "Cannot proceed please try after some time", Toast.LENGTH_LONG, true).show();
                 }
 
@@ -110,49 +114,96 @@ public class MainActivity extends AppCompatActivity {
         Toasty.Config.getInstance().setGravity(Gravity.CENTER_VERTICAL|Gravity.START,240, -220).apply();
 
         Globaldata sharedData = Globaldata.getInstance();
-        Call<Object> call = RetrofitClient.getInstance().getMyApi().login(loginResult);
 
-        call.enqueue(new Callback<Object>() {
-            @Override
-            public void onResponse(Call<Object>  call, Response<Object> response) {
-                Gson gson  = new Gson();
+        DBHelper dbHelper = new DBHelper(getApplicationContext());
 
-                JsonParser parser = new JsonParser();
-                JsonElement element = gson.toJsonTree(response.body());
-                JsonObject rootObject = element.getAsJsonObject();
+        Users userAvaialable = dbHelper.checkusername(loginResult.getEmail(),loginResult.getPassword());
 
-                if(!rootObject.isJsonNull()){
-                    Toasty.success(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG, true).show();
-                    if(rootObject.get("type").getAsString().equals("customer")){
-                        String vehicleId = rootObject.get("vehicleId").getAsString();
-                        String vehicleType = rootObject.get("vehicleType").getAsString();
-                        System.out.println(vehicleId);
-                        Intent intent=new Intent(MainActivity.this,StationList.class);
-                        intent.putExtra("vehicleId",vehicleId);
-                        sharedData.setNotification_indexOne(vehicleId);
-                        sharedData.setNotification_indexTwo(vehicleType);
-                        startActivity(intent);
 
-                    }else{
+        if(!userAvaialable.getUserType().equals("0") ){
+            if(userAvaialable.getUserType().equals("customer")){
+                Toasty.success(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG, true).show();
+                Intent intent=new Intent(MainActivity.this,StationList.class);
+                intent.putExtra("vehicleId","ABC 0003");
+                sharedData.setNotification_indexOne("ABC 0003");
+                sharedData.setNotification_indexTwo("Car");
+                startActivity(intent);
+            }else {
+                Toasty.success(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG, true).show();
+                Intent intent=new Intent(MainActivity.this,ownerStationList.class);
+                intent.putExtra("name",userAvaialable.getUserName());
+                intent.putExtra("phone",userAvaialable.getUserPhone());
+                intent.putExtra("email",userAvaialable.getUserMail());
+                startActivity(intent);
+            }
+        }else{
+
+            Call<Object> call = RetrofitClient.getInstance().getMyApi().login(loginResult);
+            call.enqueue(new Callback<Object>() {
+                @Override
+                public void onResponse(Call<Object>  call, Response<Object> response) {
+                    Gson gson  = new Gson();
+
+                    JsonParser parser = new JsonParser();
+                    JsonElement element = gson.toJsonTree(response.body());
+                    JsonObject rootObject = element.getAsJsonObject();
+
+                    if(!rootObject.isJsonNull()){
+                        Toasty.success(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG, true).show();
+                        if(rootObject.get("type").getAsString().equals("customer")){
+                            String vehicleId = rootObject.get("vehicleId").getAsString();
+                            String vehicleType = rootObject.get("vehicleType").getAsString();
+                            System.out.println(vehicleId);
+                            Intent intent=new Intent(MainActivity.this,StationList.class);
+                            intent.putExtra("vehicleId",vehicleId);
+                            sharedData.setNotification_indexOne(vehicleId);
+                            sharedData.setNotification_indexTwo(vehicleType);
+                            startActivity(intent);
+
+                        }else{
+                            String name = rootObject.get("name").getAsString();
+                            String phone = rootObject.get("phone").getAsString();
+                            String email = rootObject.get("email").getAsString();
+                            Intent intent=new Intent(MainActivity.this,ownerStationList.class);
+                            intent.putExtra("name",name);
+                            intent.putExtra("phone",phone);
+                            intent.putExtra("email",email);
+                            startActivity(intent);
+                        }
+
                         String name = rootObject.get("name").getAsString();
                         String phone = rootObject.get("phone").getAsString();
                         String email = rootObject.get("email").getAsString();
-                        Intent intent=new Intent(MainActivity.this,ownerStationList.class);
-                        intent.putExtra("name",name);
-                        intent.putExtra("phone",phone);
-                        intent.putExtra("email",email);
-                        startActivity(intent);
-                    }
-                }else{
-                    Toasty.warning(getApplicationContext(), "Recheck your credentials", Toast.LENGTH_LONG, true).show();
-                }
-            }
+                        String type = rootObject.get("type").getAsString();
+                        String id = rootObject.get("id").getAsString();
+                        String token = rootObject.get("token").getAsString();
 
-            @Override
-            public void onFailure(Call<Object>  call, Throwable t) {
-                Toasty.error(getApplicationContext(), "Internal Error Occurred", Toast.LENGTH_LONG, true).show();
-            }
-        });
+                        DBHelper dbHelper = new DBHelper(getApplicationContext());
+
+                        long resultVal = dbHelper.insertInfo(name,phone,email,type,id,token);
+                        if(resultVal > 0){
+                            System.out.println("SQLITE CREATED");
+                        }else{
+                            System.out.println("SQLITE NOT CREATED");
+                        }
+
+
+                    }else{
+                        Toasty.warning(getApplicationContext(), "Recheck your credentials", Toast.LENGTH_LONG, true).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Object>  call, Throwable t) {
+                    Toasty.error(getApplicationContext(), "Internal Error Occurred", Toast.LENGTH_LONG, true).show();
+                }
+            });
+
+        }
+
+
+
+
     }
 
     //To empty the input fields

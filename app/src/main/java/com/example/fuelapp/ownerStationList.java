@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,6 +23,7 @@ import com.example.fuelapp.APIManager.Station;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -46,7 +50,10 @@ public class ownerStationList extends AppCompatActivity {
     String[] ids ;
 
     TextView profileName,phoneNo;
+    EditText listsearch;
     Button logoutBtn;
+
+    String name, email, phone;
 
 
     @Override
@@ -55,9 +62,9 @@ public class ownerStationList extends AppCompatActivity {
 
         //intent data retrieval
         Intent i = getIntent();
-        String name = i.getStringExtra("name");
-        String phone = i.getStringExtra("phone");
-        String email = i.getStringExtra("email");
+        name = i.getStringExtra("name");
+        phone = i.getStringExtra("phone");
+        email = i.getStringExtra("email");
 
         //triggering retrieval of particular owners stations list
         getOwnersStations(email);
@@ -72,6 +79,7 @@ public class ownerStationList extends AppCompatActivity {
         profileName =(TextView) findViewById(R.id.profileOwnerNameValue);
         phoneNo = (TextView) findViewById(R.id.profileOwnerPhoneValue);
         logoutBtn=findViewById(R.id.logoutbtn2);
+        listsearch  = findViewById(R.id.FuelTypeUpdateInputUpdate);
 
         //trigger button click logout button
         logoutBtn.setOnClickListener(new View.OnClickListener(){
@@ -82,6 +90,9 @@ public class ownerStationList extends AppCompatActivity {
 
             }
         });
+
+        //trigger button click logout button
+
 
         //single block click trigger
         stationOwnerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -118,6 +129,7 @@ public class ownerStationList extends AppCompatActivity {
                     for(int i=0; i<list.size(); i++){
                         ids[i] = list.get(i).getId();
                         stationNames[i]=list.get(i).getName();
+                        System.out.println(stationNames[i]=list.get(i).getName());
                     }
                     length = ids.length;
                 }
@@ -131,6 +143,59 @@ public class ownerStationList extends AppCompatActivity {
         });
 
     }
+
+    public  void searchStations(String value){
+        ArrayList<String> stationsNamesList = new ArrayList<>();
+        ArrayList<String> stationsIdsList = new ArrayList<>();
+        for(int a=0; a<stationNames.length; a++){
+            int search = stationNames[a].indexOf(value);
+            if(search == 0){
+               stationsNamesList.add(stationNames[a]);
+                stationsIdsList.add(ids[a]);
+            }
+        }
+        String [] list1 = new String[stationsNamesList.size()];
+        String [] list2 = new String[stationsNamesList.size()];
+        list1 = stationsNamesList.toArray(list1);
+        list2 = stationsNamesList.toArray(list2);
+
+        stationNames = list1;
+        ids = list2;
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        listsearch.setOnEditorActionListener(new TextView.OnEditorActionListener()
+        {
+            @Override
+            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent)
+            {
+                if (id == EditorInfo.IME_NULL)
+                {
+                    searchStations(listsearch.getText().toString());
+
+                    CustomAdapter customAdapter = new CustomAdapter();
+                    stationOwnerListView.setAdapter(customAdapter);
+
+                    stationOwnerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
+                            Intent intent = new Intent(getApplicationContext(),updateOwner.class);
+                            intent.putExtra("stationName",stationNames[i]);
+                            intent.putExtra("stationId",ids[i]);
+                            startActivity(intent);
+                        }
+                    });
+
+                    return true;
+                }
+                return false;
+            }
+        });
+    }
+
 
     private class CustomAdapter extends BaseAdapter {
         @Override
@@ -153,6 +218,7 @@ public class ownerStationList extends AppCompatActivity {
             TextView stationName = view.findViewById(R.id.stationNameProfile);
             TextView stationID = view.findViewById(R.id.stationIDProfile);
 //            TextView address = view.findViewById(R.id.addressValueProfile);
+            notifyDataSetChanged();
 
 
             stationName.setText(stationNames[i]);
