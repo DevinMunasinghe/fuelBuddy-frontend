@@ -271,8 +271,8 @@ public class StationList extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onResume() {
+        super.onResume();
         getStations();
         CustomAdapter customAdapter = new CustomAdapter();
 
