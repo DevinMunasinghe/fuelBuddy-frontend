@@ -2,6 +2,7 @@ package com.example.fuelapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.text.TextUtils;
@@ -149,6 +150,8 @@ public class DriverRegistration extends AppCompatActivity implements AdapterView
 
                 if(response.isSuccessful()){
                     Toasty.success(getApplicationContext(), "Driver Registered Successfully!", Toast.LENGTH_LONG, true).show();
+                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(intent);
                 }else {
                     Toasty.error(getApplicationContext(), "Registration Unsuccessful", Toast.LENGTH_LONG, true).show();
                 }

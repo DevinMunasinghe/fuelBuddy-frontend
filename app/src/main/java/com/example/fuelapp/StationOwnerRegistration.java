@@ -2,6 +2,7 @@ package com.example.fuelapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Gravity;
@@ -138,6 +139,8 @@ public class StationOwnerRegistration extends AppCompatActivity {
                 registerStationOwner(stationOwner,stationDet);
 
                 emptyFilledData();
+                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
 
             }
 

@@ -323,7 +323,9 @@ public class updateOwner extends AppCompatActivity implements AdapterView.OnItem
                 if(response.isSuccessful()){
                     Gson gson = new Gson();
                     System.out.println(gson.toJsonTree(response.body()));
-                    Toasty.success(getApplicationContext(), "Owner Details Registered Successfully!", Toast.LENGTH_LONG, true).show();
+                    Toasty.success(getApplicationContext(), "Fuel stock updated Successfully!", Toast.LENGTH_LONG, true).show();
+                    Intent intent = new Intent(getApplicationContext(),ownerStationList.class);
+                    startActivity(intent);
                 }
             }
 
